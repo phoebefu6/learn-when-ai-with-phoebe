@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Six sessions on the routing skill: when a dashboard beats a model, when classic ML beats GenAI, and when the tokens are worth every cent. Route a live ten-workload backlog and watch true cost fall from $2,315 to $416 while trust climbs to 10/10. Free, by Phoebe Fu.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="Learn When AI with Phoebe">
+<meta property="og:description" content="When to use AI, when not: the routing skill. Do not use a nuclear weapon to kill a mosquito.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-when-ai-with-phoebe/">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-when-ai-with-phoebe/assets/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Learn When AI with Phoebe">
+<meta name="twitter:description" content="When to use AI, when not: the routing skill. $2,315 to $416 while trust climbs to 10/10.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-when-ai-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Learn When AI with Phoebe</title>
+<link rel="stylesheet" href="assets/style.css?v=1">
+<style>
+
+  .stats-row { display: flex; gap: 2.4rem; margin-top: 1.5rem; flex-wrap: wrap; }
+  .stat b { display: block; font-size: 2.1rem; font-weight: 800; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .stat span { font-size: .72rem; opacity: .85; text-transform: uppercase; letter-spacing: .09em; font-weight: 600; }
+
+  .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .course-card {
+    border: 1px solid var(--hairline);
+    border-top: 4px solid var(--diff, var(--indigo));
+    border-radius: var(--radius);
+    padding: 1.2rem 1.3rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    text-decoration: none;
+    color: var(--ink);
+    background: #fff;
+    transition: box-shadow .15s ease, border-color .15s ease, transform .15s ease;
+    position: relative;
+  }
+  .course-card:hover { border-color: var(--indigo-soft); border-top-color: var(--diff, var(--indigo)); box-shadow: 0 8px 28px rgba(180,83,9,.14); transform: translateY(-3px); }
+  .course-card .cicon { font-size: 1.7rem; line-height: 1; }
+  .course-card .cnum { font-size: .72rem; font-weight: 700; color: var(--indigo); text-transform: uppercase; letter-spacing: .1em; }
+  .course-card h3 { font-size: 1.05rem; font-weight: 800; line-height: 1.3; }
+  .course-card p { font-size: .85rem; color: var(--muted); flex: 1; }
+  .course-card .meta { display: flex; gap: .4rem; flex-wrap: wrap; }
+
+  .diff-legend { display: flex; gap: 1rem; margin-top: 1.6rem; font-size: .74rem; color: var(--muted); font-weight: 600; flex-wrap: wrap; }
+  .diff-legend i { display: inline-block; width: .85rem; height: .35rem; border-radius: 999px; margin-right: .35rem; vertical-align: middle; }
+
+  .paths { margin-top: 2.6rem; }
+  .paths h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: .3rem; }
+  .paths .plede { color: var(--muted); font-size: .92rem; margin-bottom: .8rem; }
+  .path { display: flex; gap: .55rem; align-items: center; padding: .75rem 0; border-bottom: .5px solid var(--hairline); flex-wrap: wrap; }
+  .path:last-child { border-bottom: none; }
+  .path b { min-width: 15.5rem; font-size: .9rem; }
+  .path .pstep { background: var(--indigo-50); color: var(--indigo); border-radius: 999px; padding: .16rem .68rem; font-weight: 700; font-size: .8rem; text-decoration: none; transition: all .12s ease; }
+  .path .pstep:hover { background: var(--indigo); color: #fff; }
+  .path .parr { color: var(--faint); font-weight: 700; }
+
+  .mm-section { margin-top: 1.6rem; }
+  .mm-section h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: .2rem; }
+  .mm-section .mm-lede { color: var(--muted); font-size: .92rem; margin-bottom: .4rem; }
+  .mm-wrap { border: 1px solid var(--hairline); border-radius: var(--radius); background: linear-gradient(180deg,#fff,#FFFBEB); padding: .6rem; overflow-x: auto; }
+  .mm-svg { width: 100%; height: auto; display: block; max-width: 60rem; margin: 0 auto; min-width: 34rem; }
+  .mm-link { cursor: pointer; text-decoration: none; }
+  .mm-node rect { transition: opacity .15s ease, filter .15s ease; }
+  .mm-node text { pointer-events: none; }
+  .mm-link:hover .mm-node rect { filter: brightness(1.06); }
+  .mm-edge { transition: opacity .15s ease; }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn with Phoebe · Applied AI</div>
+    <h1>Learn <span class="accent">When AI</span> with Phoebe</h1>
+    <p class="sub">Six sessions, 45 minutes each, on the most underrated skill in the AI era: routing. Which work goes to a dashboard, which to classic ML, which genuinely deserves the tokens - and what each choice really costs once evals, monitoring and cleanup enter the price. Built on a live ten-workload backlog with real published prices. Do not use a nuclear weapon to kill a mosquito: the mosquito dies either way, and now you also have a crater to explain.</p>
+    <div class="stats-row">
+      <div class="stat"><b data-count="6">6</b><span>sessions</span></div>
+      <div class="stat"><b>$<span data-count="2315">2,315</span></b><span>true cost, unrouted</span></div>
+      <div class="stat"><b>$<span data-count="416">416</span></b><span>true cost, routed</span></div>
+      <div class="stat"><b data-count="10">10</b><span>/10 answers trusted</span></div>
+      <div class="stat"><b data-count="45">45</b><span>min per session</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="section">
+    <div class="paths" style="margin-top:0">
+      <h2>The six sessions 🎯 <span style="font-size:.85rem;font-weight:600;color:var(--muted)">· one routing playbook, built across all of them</span></h2>
+      <p class="plede">Bring your team's real backlog. Each session adds one routing rule; by session 6 all five run live against Cadence's ten workloads, and then against yours.</p>
+    </div>
+
+    <div class="course-grid">
+      <a class="course-card" href="courses/01-the-triage-question.html" style="--diff:#34D399">
+        <span class="cicon">🩺</span>
+        <span class="cnum">Session 1 · easy</span>
+        <h3>The triage question</h3>
+        <p>Why "should we use AI" is the wrong first question, the two-question test that routes any workload, and what the 95 percent failure statistic actually measures.</p>
+        <span class="meta"><span class="pill amber">▶ Start here</span></span>
+      </a>
+      <a class="course-card" href="courses/02-the-almost-free-tier.html" style="--diff:#34D399">
+        <span class="cicon">📊</span>
+        <span class="cnum">Session 2 · easy</span>
+        <h3>The almost-free tier</h3>
+        <p>Dashboards, SQL and rules: verified once, then cents forever. The 10 GB question that costs six cents as a query and five figures as tokens.</p>
+        <span class="meta"><span class="pill">the BI case</span></span>
+      </a>
+      <a class="course-card" href="courses/03-when-classic-ml-wins.html" style="--diff:#FBBF24">
+        <span class="cicon">🌲</span>
+        <span class="cnum">Session 3 · medium</span>
+        <h3>When classic ML wins</h3>
+        <p>Structured prediction is a trained model's home game: the tabular evidence stack, backtestability, and inference for cents on the middle rung.</p>
+        <span class="meta"><span class="pill">the ML case</span></span>
+      </a>
+      <a class="course-card" href="courses/04-when-genai-wins.html" style="--diff:#FBBF24">
+        <span class="cicon">✨</span>
+        <span class="cnum">Session 4 · medium</span>
+        <h3>When GenAI wins</h3>
+        <p>Unstructured language, judgment and generation - where the tokens are the bargain. Plus the cascade: Checkr's 5x and Google's 100x from escalating only the residue.</p>
+        <span class="meta"><span class="pill">the AI case</span></span>
+      </a>
+      <a class="course-card" href="courses/05-the-cost-and-risk-math.html" style="--diff:#FB923C">
+        <span class="cicon">🧮</span>
+        <span class="cnum">Session 5 · hands-on</span>
+        <h3>The cost and risk math</h3>
+        <p>Real token math on real prices, why the true cost includes evals, monitoring and cleanup, and the error-cost asymmetry that dwarfs every API bill.</p>
+        <span class="meta"><span class="pill">the honest number</span></span>
+      </a>
+      <a class="course-card" href="courses/06-the-routing-playbook.html" style="--diff:#F87171">
+        <span class="cicon">🗺️</span>
+        <span class="cnum">Session 6 · capstone</span>
+        <h3>The routing playbook</h3>
+        <p>All five rules live against the full backlog: $2,315 to $416 while trust climbs 0/10 to 10/10. Then the one-page tree becomes yours.</p>
+        <span class="meta"><span class="pill amber">🔒 the live simulator</span></span>
+      </a>
+    </div>
+
+    <div class="diff-legend">
+      <span><i style="background:#34D399"></i>easy - everyone</span>
+      <span><i style="background:#FBBF24"></i>medium</span>
+      <span><i style="background:#FB923C"></i>hands-on</span>
+      <span><i style="background:#F87171"></i>capstone</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="paths" style="margin-top:0">
+      <h2>Your passport 🎫</h2>
+      <p class="plede">Clear all three quiz questions in a session and it gets stamped. Stamps live in this browser only.</p>
+    </div>
+    <div class="pp-strip"></div>
+  </section>
+
+  <section class="section">
+    <div class="paths">
+      <h2>Choose your path 🗺️</h2>
+      <p class="plede">Three doors into the same discipline: the tool is chosen by the work, never the other way round.</p>
+      <div class="path"><b>💼 I approve the AI budget</b>
+        <a class="pstep" href="courses/01-the-triage-question.html">1</a><span class="parr">→</span>
+        <a class="pstep" href="courses/05-the-cost-and-risk-math.html">5</a><span class="parr">→</span>
+        <a class="pstep" href="courses/06-the-routing-playbook.html">6</a>
+        <span style="font-size:.82rem;color:var(--muted)">the test, the honest number, then the playbook</span>
+      </div>
+      <div class="path"><b>🔧 I route my own work every day</b>
+        <a class="pstep" href="courses/02-the-almost-free-tier.html">2</a><span class="parr">→</span>
+        <a class="pstep" href="courses/03-when-classic-ml-wins.html">3</a><span class="parr">→</span>
+        <a class="pstep" href="courses/04-when-genai-wins.html">4</a>
+        <span style="font-size:.82rem;color:var(--muted)">each tier's genuine home ground, one session each</span>
+      </div>
+      <div class="path"><b>🎯 The whole journey</b>
+        <a class="pstep" href="courses/01-the-triage-question.html">1</a><span class="parr">→</span>
+        <a class="pstep" href="courses/02-the-almost-free-tier.html">2</a><span class="parr">→</span>
+        <a class="pstep" href="courses/03-when-classic-ml-wins.html">3</a><span class="parr">→</span>
+        <a class="pstep" href="courses/04-when-genai-wins.html">4</a><span class="parr">→</span>
+        <a class="pstep" href="courses/05-the-cost-and-risk-math.html">5</a><span class="parr">→</span>
+        <a class="pstep" href="courses/06-the-routing-playbook.html">6</a>
+        <span style="font-size:.82rem;color:var(--muted)">from tool-first habit to a routing playbook you can defend</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="paths" style="margin-top:0">
+      <h2>What is real here 🧾</h2>
+      <p class="plede">A course about honest costing owes you an unusually precise account of its own numbers.</p>
+    </div>
+    <table class="clean">
+      <tr><th>Claim</th><th>Status</th></tr>
+      <tr><td>The dashboard answers in the simulator</td><td>Real. Computed live in your browser from the embedded 168-day dataset when you route a workload there</td></tr>
+      <tr><td>The LLM answers in the simulator</td><td>A deterministic teaching model of documented failure modes, labelled as such on the widget. It calls no API</td></tr>
+      <tr><td>Every price</td><td>Official published rates, dated September 2026: Claude Sonnet 5 at $2/$10 per million tokens, BigQuery on-demand at $6.25 per TiB</td></tr>
+      <tr><td>The 95 percent pilot statistic</td><td>MIT Project NANDA, taught with its own author's correction: a learning gap in organizations, not model failure - and not peer-reviewed</td></tr>
+      <tr><td>The 80 percent project-failure figure</td><td>RAND cites external estimates; what RAND measured is the ranked root causes, led by leaders misunderstanding the problem</td></tr>
+      <tr><td>Trees beat deep learning on tabular data</td><td>Scoped honestly: typical, medium-sized tabular data, per Grinsztajn et al. and the follow-up benchmark literature</td></tr>
+    </table>
+  </section>
+
+  <section class="section mm-section">
+    <h2>The knowledge map 🧠</h2>
+    <p class="mm-lede">The whole course at a glance - hover a session to spotlight its concepts, click any node to jump in.</p>
+    <div class="mm-wrap"><div id="mindmap"></div></div>
+  </section>
+
+  <footer class="pagefoot">
+    <span>learn-when-ai-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span>Pairs with <a href="https://phoebefu6.github.io/learn-ai-literacy-with-phoebe/">Learn AI Literacy ↗</a> · source map: <span class="mono">materials/official-course-map.md</span></span>
+  </footer>
+
+</main>
+
+<script>
+window.MINDMAP_DATA = {
+  "title": "Learn\nWhen AI",
+  "centerColor": "#78350F",
+  "sessions": [
+    {
+      "label": "The triage\nquestion",
+      "href": "courses/01-the-triage-question.html",
+      "color": "#34D399",
+      "concepts": [
+        { "label": "The two-question test", "href": "courses/01-the-triage-question.html" },
+        { "label": "95% read honestly", "href": "courses/01-the-triage-question.html" },
+        { "label": "The escalation ladder", "href": "courses/01-the-triage-question.html" }
+      ]
+    },
+    {
+      "label": "The almost-free\ntier",
+      "href": "courses/02-the-almost-free-tier.html",
+      "color": "#34D399",
+      "concepts": [
+        { "label": "Verified once, cents forever", "href": "courses/02-the-almost-free-tier.html" },
+        { "label": "$0.06 vs five figures", "href": "courses/02-the-almost-free-tier.html" },
+        { "label": "Hierarchy of needs", "href": "courses/02-the-almost-free-tier.html" }
+      ]
+    },
+    {
+      "label": "When classic\nML wins",
+      "href": "courses/03-when-classic-ml-wins.html",
+      "color": "#FBBF24",
+      "concepts": [
+        { "label": "The tabular evidence", "href": "courses/03-when-classic-ml-wins.html" },
+        { "label": "Backtestability", "href": "courses/03-when-classic-ml-wins.html" },
+        { "label": "Inference for cents", "href": "courses/03-when-classic-ml-wins.html" }
+      ]
+    },
+    {
+      "label": "When GenAI\nwins",
+      "href": "courses/04-when-genai-wins.html",
+      "color": "#FBBF24",
+      "concepts": [
+        { "label": "Judgment work's home", "href": "courses/04-when-genai-wins.html" },
+        { "label": "The cascade pattern", "href": "courses/04-when-genai-wins.html" },
+        { "label": "Checkr and 100x", "href": "courses/04-when-genai-wins.html" }
+      ]
+    },
+    {
+      "label": "The cost and\nrisk math",
+      "href": "courses/05-the-cost-and-risk-math.html",
+      "color": "#FB923C",
+      "concepts": [
+        { "label": "Real token math", "href": "courses/05-the-cost-and-risk-math.html" },
+        { "label": "The true-cost stack", "href": "courses/05-the-cost-and-risk-math.html" },
+        { "label": "Error-cost asymmetry", "href": "courses/05-the-cost-and-risk-math.html" }
+      ]
+    },
+    {
+      "label": "The routing\nplaybook",
+      "href": "courses/06-the-routing-playbook.html",
+      "color": "#F87171",
+      "concepts": [
+        { "label": "The one-page tree", "href": "courses/06-the-routing-playbook.html" },
+        { "label": "$2,315 to $416 live", "href": "courses/06-the-routing-playbook.html" },
+        { "label": "Routes expire", "href": "courses/06-the-routing-playbook.html" }
+      ]
+    }
+  ]
+};
+</script>
+<script src="assets/mindmap.js?v=1"></script>
+<script src="assets/app.js?v=1"></script>
+</body>
+</html>

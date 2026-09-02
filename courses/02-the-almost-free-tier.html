@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Session 2 of 6. The six-cent query that would cost five figures in tokens, the verified-once economics of BI and SQL, the hierarchy of needs, and the honest limits of the free tier.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="The almost-free tier - learn when ai with phoebe">
+<meta property="og:description" content="Session 2 of 6. The six-cent query vs the five-figure token bill, and why verified once is the property everything else pays rent to imitate.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-when-ai-with-phoebe/courses/02-the-almost-free-tier.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-when-ai-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The almost-free tier - learn when ai with phoebe">
+<meta name="twitter:description" content="Session 2 of 6. The six-cent query vs the five-figure token bill.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-when-ai-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Session 2 · The almost-free tier - learn when ai with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-when-ai-with-phoebe</a> / Session 2 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn When AI with Phoebe · Session 2 of 6</div>
+    <h1>The almost-free <span class="accent">tier</span></h1>
+    <p class="sub">Session 1 sorted the backlog; tonight you price the biggest pile. The same 10 GB question costs about six cents as a query and five figures as tokens, and the gap is not a discount - it is a different kind of correctness. BI, SQL, and rules are the tier where you verify the logic once and then run it forever for cents, which is exactly why every other tier has to earn its way past them.</p>
+    <div class="chip-row">
+      <span class="chip level">🟢 Easy</span>
+      <span class="chip audience">Leaders deciding where AI budget goes</span>
+      <span class="chip audience">Practitioners routing their own work</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:5">3-22 · The economics of verified-once</span>
+      <span class="a3" style="flex:4">22-40 · Build-along: price three workloads</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where session 1 left you</h2>
+    </div>
+    <p class="lede">You walked out of session 1 with the two-question test and a backlog in three piles: <strong>4 deterministic, 3 pattern, 3 judgment</strong> for Cadence, and your own version for your own week. Tonight is about the deterministic pile - the biggest one, and the one most often insulted with a tool it never asked for.</p>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> The math that makes the deterministic tier almost free, walked by hand until it is yours. Rogati's hierarchy of needs mapped onto Cadence's actual stack. And the honest limits of this tier - both the work it must hand up the ladder, and the ways it quietly fails on its own.</p>
+    </div>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The pile everyone skips past on the way to the demo<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Four of Cadence's ten workloads - yesterday's DAU, monthly revenue by plan, cards that failed three times, the weekly reconciliation - passed both questions from session 1. The logic is writable, the definitions are aligned. That makes them deterministic, and deterministic work has a superpower no probabilistic tool can buy: <strong>you verify it once, and then it is simply correct, every run, forever</strong>.</p>
+        <p>This session exists because that pile is where routing discipline pays fastest. In the simulator, moving just these workloads off the LLM and onto queries is a big part of how the true monthly cost falls from $2,315 at baseline to $224 with the free tier on - while trusted answers go from 0 out of 10 to 4 out of 10. Cheaper and more trustworthy at the same time is not a trade-off. It is what fit looks like.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>What "free" means here, precisely<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Almost free at the margin.</strong> Building the query and arguing about the definition costs real hours. Running it again costs cents, and often literally nothing.</li>
+          <li><strong>Free of verification debt.</strong> A verified query does not need an eval set, a monitoring owner, or a cleanup budget. Those line items exist only above this tier - session 5 prices them.</li>
+          <li><strong>Not free of maintenance.</strong> Definitions drift and dashboards sprawl. Part 3 is honest about that, because a course that only flatters its favorite tier is an advertisement.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 1 ============ -->
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers the verified-once economics</span>
+      <h2>Six cents one way, five figures the other</h2>
+      <span class="tag concept">8 min live</span>
+    </div>
+    <p class="lede">One question, two routes, and a price gap so large it stops being a price comparison and becomes a category lesson. All prices as of Sept 2026.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Comparison diagram: the same 10 GB question routed as a SQL scan costs about six cents, routed as LLM input tokens costs over twelve thousand five hundred dollars">
+        <style>
+          .w2aW { font: 700 12px Inter, sans-serif; fill: #fff; }
+          .w2aB { font: 800 30px Inter, sans-serif; fill: #fff; }
+          .w2aS { font: 400 11px Inter, sans-serif; fill: #FDE68A; }
+          .w2aK { font: 700 12px Inter, sans-serif; fill: #1C1917; }
+          .w2aE { font: 600 11px Inter, sans-serif; fill: #B45309; }
+          .w2aN { font: 400 12px Inter, sans-serif; fill: #6B7280; }
+        </style>
+        <defs>
+          <marker id="w2aAr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#D6D3D1"/></marker>
+        </defs>
+        <rect x="290" y="24" width="300" height="40" rx="10" fill="#78350F"/>
+        <text class="w2aW" x="440" y="49" text-anchor="middle">The same 10 GB question</text>
+        <line x1="380" y1="64" x2="240" y2="112" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w2aAr)"/>
+        <line x1="500" y1="64" x2="640" y2="112" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w2aAr)"/>
+        <text class="w2aE" x="250" y="94">as a scan</text>
+        <text class="w2aE" x="560" y="94">as tokens</text>
+        <rect x="70" y="116" width="340" height="158" rx="12" fill="#166534"/>
+        <text class="w2aW" x="94" y="146">Route 1 · SQL scan</text>
+        <text class="w2aB" x="94" y="192">~$0.06</text>
+        <text class="w2aS" x="94" y="222">BigQuery on-demand, $6.25 per TiB scanned</text>
+        <text class="w2aS" x="94" y="242">first 1 TiB each month is free</text>
+        <text class="w2aS" x="94" y="262">as of Sept 2026</text>
+        <rect x="470" y="116" width="340" height="158" rx="12" fill="#B45309"/>
+        <text class="w2aW" x="494" y="146">Route 2 · LLM input tokens</text>
+        <text class="w2aB" x="494" y="192">$12,500+</text>
+        <text class="w2aS" x="494" y="222">10 GB of text is roughly 2.5B tokens</text>
+        <text class="w2aS" x="494" y="242">at ~$5 per million input tokens</text>
+        <text class="w2aS" x="494" y="262">before a single output token</text>
+        <rect x="70" y="296" width="340" height="40" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="1.5"/>
+        <text class="w2aK" x="240" y="321" text-anchor="middle">verified once → runs forever</text>
+        <rect x="470" y="296" width="340" height="40" rx="10" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.5"/>
+        <text x="640" y="321" text-anchor="middle" style="font:700 12px Inter,sans-serif;fill:#991B1B">re-verified every single run</text>
+        <text class="w2aN" x="60" y="378">The gap is roughly 200,000x, and it is not a pricing quirk: a scan touches bytes once with logic</text>
+        <text class="w2aN" x="60" y="398">that was already proven. Tokens pay for fresh judgment on every run, whether the run needs it or not.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the same question, two routes, and a 200,000x gap that is really a category difference</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The math, walked by hand<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>BigQuery's on-demand price is <strong>$6.25 per TiB scanned</strong>, and the first TiB every month is free. A 10 GB scan is 10/1024 of a TiB, so about <strong>six cents</strong> - and in most real months it lands inside the free TiB and costs nothing at all.</p>
+        <p>Now push the same 10 GB through a frontier model as input. Text runs roughly four characters per token, so 10 GB is on the order of 2.5 billion tokens. At around <strong>$5 per million input tokens</strong>, that is <strong>$12,500 and up in input alone</strong>, before the model has said a word back. Same bytes, same question, five orders of magnitude apart. All figures as of Sept 2026 - prices move, so date-stamp yours too.</p>
+        <div class="callout tip">
+          <p><strong>Nobody actually pastes 10 GB into a prompt.</strong> Real teams sample, chunk, and summarize - and each of those steps is a human deciding what matters, which is the query's job, done worse. The 10 GB framing is honest about the underlying rates: per byte of data considered, scans are priced like plumbing and tokens are priced like consulting.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Why "verified once" is the property that matters<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The price gap is the headline, but the trust gap is the lesson. A query is <strong>correct by construction</strong>: the logic was checked against the data once, and the same logic runs every time after that. Anyone who can read SQL can audit it. When it breaks, it breaks loudly - a failed job, an empty table - not fluently.</p>
+        <p>A probabilistic answer, however good, has to be re-earned on every run. That is what an eval set is: rent, paid monthly, on trust the deterministic tier gets for free. This is why the routing test from session 1 asks about verifiability before anything else - it is the single property that decides whether trust is a one-time cost or a subscription.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Kozyrkov's boundary line<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Cassie Kozyrkov, Google's former chief decision scientist, draws the boundary this course routes by: do not use machine learning for problems that are "defined by human-made rules in the first place". If a human wrote the rule, a human can write the code - directly, checkably, once. ML earns its place only when you cannot articulate the rules yourself and you have the data to learn them from.</p>
+        <p>Her broader point is that reaching for the fancy tool first is not ambition, it is a tax: the simplest approach that actually works is the one that ships fastest, audits cleanest, and leaves budget for the problems that genuinely need learning. Cadence's deterministic pile sits entirely on the human-made-rules side of her line - every one of those four workloads has a definition somebody wrote down in a meeting.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2 ============ -->
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers the hierarchy of needs</span>
+      <h2>The pyramid under every AI ambition</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">Monica Rogati drew the data hierarchy of needs in 2017: five layers of unglamorous work, and AI at the tip. Tonight we hold it against Cadence's actual stack, rung by rung.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rogati's hierarchy of needs pyramid with six layers from collect at the bottom to AI at the tip, each mapped to a concrete part of Cadence's stack">
+        <style>
+          .w2bW { font: 700 12px Inter, sans-serif; fill: #fff; }
+          .w2bK { font: 700 12px Inter, sans-serif; fill: #1C1917; }
+          .w2bM { font: 600 12px Inter, sans-serif; fill: #78350F; }
+          .w2bN { font: 400 12px Inter, sans-serif; fill: #6B7280; }
+          .w2bH { font: 700 11px Inter, sans-serif; fill: #6B7280; letter-spacing: .05em; }
+        </style>
+        <text class="w2bH" x="60" y="40">ROGATI, 2017</text>
+        <text class="w2bH" x="560" y="40">CADENCE'S STACK, RUNG BY RUNG</text>
+        <rect x="230" y="64" width="120" height="44" rx="8" fill="#334155"/>
+        <text class="w2bW" x="290" y="91" text-anchor="middle">AI</text>
+        <rect x="190" y="118" width="200" height="44" rx="8" fill="#166534"/>
+        <text class="w2bW" x="290" y="145" text-anchor="middle">LEARN/OPTIMIZE</text>
+        <rect x="150" y="172" width="280" height="44" rx="8" fill="#FDE68A"/>
+        <text class="w2bK" x="290" y="199" text-anchor="middle">AGGREGATE/LABEL</text>
+        <rect x="110" y="226" width="360" height="44" rx="8" fill="#D97706"/>
+        <text class="w2bK" x="290" y="253" text-anchor="middle">EXPLORE/TRANSFORM</text>
+        <rect x="70" y="280" width="440" height="44" rx="8" fill="#B45309"/>
+        <text class="w2bW" x="290" y="307" text-anchor="middle">MOVE/STORE</text>
+        <rect x="30" y="334" width="520" height="44" rx="8" fill="#78350F"/>
+        <text class="w2bW" x="290" y="361" text-anchor="middle">COLLECT</text>
+        <line x1="352" y1="86" x2="552" y2="86" stroke="#D6D3D1" stroke-width="1.5"/>
+        <line x1="392" y1="140" x2="552" y2="140" stroke="#D6D3D1" stroke-width="1.5"/>
+        <line x1="432" y1="194" x2="552" y2="194" stroke="#D6D3D1" stroke-width="1.5"/>
+        <line x1="472" y1="248" x2="552" y2="248" stroke="#D6D3D1" stroke-width="1.5"/>
+        <line x1="512" y1="302" x2="552" y2="302" stroke="#D6D3D1" stroke-width="1.5"/>
+        <line x1="552" y1="356" x2="552" y2="356" stroke="#D6D3D1" stroke-width="1.5"/>
+        <text class="w2bM" x="560" y="82">3 judgment workloads: tickets,</text>
+        <text class="w2bM" x="560" y="98">drafts, transcripts (session 4)</text>
+        <text class="w2bM" x="560" y="136">churn, forecast, anomalies:</text>
+        <text class="w2bM" x="560" y="152">the pattern pile (session 3)</text>
+        <text class="w2bM" x="560" y="190">dashboard tiles: DAU, revenue</text>
+        <text class="w2bM" x="560" y="206">by plan, failed cards - tonight</text>
+        <text class="w2bM" x="560" y="244">SQL models and the metric</text>
+        <text class="w2bM" x="560" y="260">definitions the teams agreed on</text>
+        <text class="w2bM" x="560" y="298">one warehouse, one events</text>
+        <text class="w2bM" x="560" y="314">table everything reads from</text>
+        <text class="w2bM" x="560" y="352">app events, note uploads,</text>
+        <text class="w2bM" x="560" y="368">billing records</text>
+        <text class="w2bN" x="60" y="416">Rogati's framing: AI is the self-actualization of the data hierarchy, and you need food, water and</text>
+        <text class="w2bN" x="60" y="436">shelter first. Cadence's tonight-work lives on the middle rungs. The tip is real - and it is session 4.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - Rogati's pyramid with Cadence's stack mapped onto every rung</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Most orgs reaching for the tip are skipping meals<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Rogati's layers, bottom to top: <strong>collect, move/store, explore/transform, aggregate/label, learn/optimize, and AI at the tip</strong>. Her point is not that the tip is bad - it is that the tip is <strong>self-actualization</strong>, and self-actualization on an empty stomach is called hallucinating. An org that cannot agree what "active user" means is not one clever model away from anything.</p>
+        <p>The pyramid is also a budget map. The lower rungs are exactly the almost-free tier from Part 1: verified once, run forever. Every dollar of trustworthy AI at the tip is standing on rungs somebody funded and maintained. Skipping them does not save the money - it moves the cost into cleanup, which is the most expensive line in session 5's true-cost math.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>Cadence's DAU incident from session 1, revisited with tonight's lens: the LLM summarizer returned a plausible number that was wrong by six percent - and the correct answer was already sitting behind an unused dashboard tile, computed nightly, verified months earlier, for less than a cent. The org had built the aggregate/label rung and then forgot it existed. The pyramid was fine. The routing was not.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Reading your own org's pyramid honestly<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Collect and move/store are healthy</strong> if one system of record exists per fact and nobody exports to spreadsheets to "fix" the numbers.</li>
+          <li><strong>Explore/transform is healthy</strong> if metric definitions live in code that is reviewed, not in the heads of the two people who have been there longest.</li>
+          <li><strong>Aggregate/label is healthy</strong> if the dashboards people actually open answer the questions people actually ask - Part 3 covers what happens when they drift apart.</li>
+          <li><strong>A hole in any rung is a routing fact.</strong> It does not mean "no AI ever". It means the AI above the hole inherits the hole, plus interest.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3 ============ -->
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers the tier's honest limits</span>
+      <h2>What the free tier cannot do, and how it fails on its own</h2>
+      <span class="tag concept">6 min live</span>
+    </div>
+    <p class="lede">A router that only ever routes downward is broken in the other direction. The free tier has a hard ceiling - and its own native failure modes that no amount of loyalty should excuse.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two-column diagram: work the free tier owns outright on the left, work it must hand up the ladder on the right, with the tier's own failure modes noted along the bottom">
+        <style>
+          .w2cW { font: 700 12px Inter, sans-serif; fill: #fff; }
+          .w2cK { font: 600 12px Inter, sans-serif; fill: #1C1917; }
+          .w2cS { font: 400 11px Inter, sans-serif; fill: #6B7280; }
+          .w2cR { font: 700 12px Inter, sans-serif; fill: #991B1B; }
+          .w2cN { font: 400 12px Inter, sans-serif; fill: #6B7280; }
+        </style>
+        <defs>
+          <marker id="w2cAr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#D6D3D1"/></marker>
+        </defs>
+        <rect x="60" y="30" width="360" height="40" rx="10" fill="#166534"/>
+        <text class="w2cW" x="240" y="55" text-anchor="middle">The free tier owns this outright</text>
+        <rect x="60" y="82" width="360" height="48" rx="8" fill="#FFFBEB" stroke="#166534" stroke-width="1"/>
+        <text class="w2cK" x="76" y="102">Metrics with written definitions</text>
+        <text class="w2cS" x="76" y="120">DAU, revenue by plan - verified once, cents forever</text>
+        <rect x="60" y="140" width="360" height="48" rx="8" fill="#FFFBEB" stroke="#166534" stroke-width="1"/>
+        <text class="w2cK" x="76" y="160">Threshold rules</text>
+        <text class="w2cS" x="76" y="178">cards failed 3+ times: a WHERE clause, not judgment</text>
+        <rect x="60" y="198" width="360" height="48" rx="8" fill="#FFFBEB" stroke="#166534" stroke-width="1"/>
+        <text class="w2cK" x="76" y="218">Reconciliations and audits</text>
+        <text class="w2cS" x="76" y="236">two systems compared row by row, loudly wrong if wrong</text>
+        <rect x="460" y="30" width="360" height="40" rx="10" fill="#78350F"/>
+        <text class="w2cW" x="640" y="55" text-anchor="middle">It must hand this up the ladder</text>
+        <rect x="460" y="82" width="360" height="48" rx="8" fill="#FFFBEB" stroke="#B45309" stroke-width="1"/>
+        <text class="w2cK" x="476" y="102">Theming 500 support tickets</text>
+        <text class="w2cS" x="476" y="120">"app eats my notes" never matches "data loss"</text>
+        <rect x="460" y="140" width="360" height="48" rx="8" fill="#FFFBEB" stroke="#B45309" stroke-width="1"/>
+        <text class="w2cK" x="476" y="160">Prediction from history</text>
+        <text class="w2cS" x="476" y="178">churn, forecasts: no writable rule - session 3's pile</text>
+        <rect x="460" y="198" width="360" height="48" rx="8" fill="#FFFBEB" stroke="#B45309" stroke-width="1"/>
+        <text class="w2cK" x="476" y="218">Drafting and synthesis</text>
+        <text class="w2cS" x="476" y="236">no table contains the answer - session 4's pile</text>
+        <line x1="420" y1="106" x2="460" y2="106" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w2cAr)"/>
+        <line x1="420" y1="164" x2="460" y2="164" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w2cAr)"/>
+        <line x1="420" y1="222" x2="460" y2="222" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w2cAr)"/>
+        <rect x="60" y="272" width="760" height="66" rx="10" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.5"/>
+        <text class="w2cR" x="80" y="296">The tier's own failure modes - it does not need an LLM to go wrong</text>
+        <text class="w2cS" x="80" y="316">Dashboard sprawl: 40 tiles nobody opens, so the one right answer hides in plain sight.</text>
+        <text class="w2cS" x="80" y="332">Stale definitions: the query is still correct against a definition the business quietly abandoned.</text>
+        <text class="w2cN" x="60" y="376">The ceiling and the failure modes are different problems. The ceiling means hand the work up.</text>
+        <text class="w2cN" x="60" y="396">The failure modes mean maintain the rung you are standing on. Neither is an argument for the other.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - what the free tier owns, what it hands up the ladder, and how it fails all by itself</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>A dashboard cannot theme a support ticket<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Cadence has 500 support tickets a month and a leader who wants to know what customers are angry about. The free-tier reflex is a keyword count: tally "crash", "sync", "billing". And it fails in a specific, predictable way: <strong>keyword counts miss every paraphrase</strong>. The customer who writes "the app eats my notes" is describing data loss, and the string "data loss" appears nowhere in the ticket. The count comes back confident, complete-looking, and wrong about exactly the tickets written by the angriest, least jargon-fluent customers.</p>
+        <p>This is a genuine no on Q1 from session 1: there is no writable rule for meaning. Language work belongs on the language tier, and session 4 prices what doing it properly costs and earns.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Rules impersonating judgment, and the tier's own rot<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Rules impersonating judgment.</strong> A 300-line regex for extracting action items from meeting notes is not the free tier - it is judgment work in a deterministic costume. It carries the maintenance burden of code and the accuracy of a guess, which is the worst seat in the house.</li>
+          <li><strong>Dashboard sprawl.</strong> Every unanswered question spawns a tile; nobody deletes tiles. The DAU incident happened partly because the right tile existed and nobody could find it among the forty others. A dashboard nobody opens is a query nobody verified recently.</li>
+          <li><strong>Stale definitions.</strong> The query stays correct against the definition it encodes - while the business moves the definition in a meeting the data team was not in. Verified once is a superpower with one clause: it holds until the definition changes, so definition changes must reach the code.</li>
+        </ul>
+        <p>Honest routing cuts both ways. The free tier deserves the deterministic pile - and it has to keep earning it with maintenance, pruning, and definitions that stay aligned.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Build-along</span>
+      <h2>Price three workloads by hand</h2>
+      <span class="tag demo">★ 18 min · everyone builds</span>
+    </div>
+    <p class="lede">Cadence's three query-shaped workloads, priced with nothing but the public rate card and arithmetic you can do on paper. All rates as of Sept 2026. Keep the numbers - session 5 puts the LLM routes next to them on the same page.</p>
+
+    <div class="steps">
+      <div class="step"><p><strong>Write the formula once:</strong> monthly cost = GB scanned per run x runs per month / 1024 x $6.25. That is the whole pricing model for on-demand scans. Below it, write: first 1 TiB each month is free.</p></div>
+      <div class="step"><p><strong>Price the DAU daily query.</strong> 0.4 GB per run, 22 runs a month = 8.8 GB scanned. 8.8 / 1024 x $6.25 = <strong>about $0.05 a month</strong>. Say it out loud - the daily number the whole company stands up around costs a nickel a month.</p></div>
+      <div class="step"><p><strong>Price the other two.</strong> Revenue by plan: 1.2 GB x 4 runs = 4.8 GB = <strong>about $0.03</strong>. Failed-cards rule: 0.1 GB x 30 runs = 3 GB = <strong>about $0.02</strong>. All three together: 16.6 GB, roughly ten cents - and since 16.6 GB sits far inside the free first TiB, the actual invoice is <strong>$0.00</strong>.</p></div>
+      <div class="step"><p><strong>Write the acceptance test line for each.</strong> DAU: "must equal the count of distinct users with at least one event yesterday". Revenue by plan: "plan rows must sum to the month's total invoiced revenue". Failed cards: "every card with three or more failed charges this week appears exactly once". If you can write the line, you can verify it once - that is the property you are buying.</p></div>
+      <div class="step"><p><strong>Repeat for one workload of your own.</strong> Pick the most-asked question on your team, estimate the scan honestly, run the formula. Most people's first reaction to the result is to check the math. The math is fine. The reaction is the lesson.</p></div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>Bring these three prices to session 5.</strong> The cost session runs the same three workloads through the token math on real model prices, then adds the lines nobody budgets - evals, monitoring, cleanup - so the comparison is finally apples to apples. Tonight's nickels are the baseline everything else gets measured against.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Before session 3</h2>
+      <span class="tag exercise">30 min</span>
+    </div>
+    <ol>
+      <li><strong>Price every workload in your deterministic pile</strong> with the formula from the build-along - a real scan estimate and a real monthly number, even if the number is embarrassing in how small it is.</li>
+      <li><strong>Write the acceptance test line for each one.</strong> Any workload where you cannot write the line does not belong in the pile - move it, and note which pile it actually wants.</li>
+      <li><strong>Audit one dashboard for sprawl.</strong> Count the tiles; count the tiles opened in the last month. The gap is your org's version of the unused DAU tile.</li>
+      <li><strong>Find one stale definition.</strong> Ask the owner of a metric when its definition last changed, then ask when the query last changed. If those dates disagree, you have found Part 3 in the wild.</li>
+      <li><strong>Optional:</strong> skim Rogati's original hierarchy of needs essay and mark, for your own org, the lowest rung with a hole in it.</li>
+    </ol>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and session 2 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · The same 10 GB question costs about $0.06 as a query and $12,500+ as LLM input. What drives the gap?</p>
+      <button class="qopt" type="button">A · Cloud vendors subsidize queries at a loss to win AI workloads later</button>
+      <button class="qopt" type="button">B · A scan runs already-verified logic over bytes priced per TiB; tokens buy fresh judgment on every byte, every run</button>
+      <button class="qopt" type="button">C · The gap closes once you batch the LLM calls and cache the prompts</button>
+      <p class="qwhy">$6.25 per TiB versus roughly $5 per million input tokens - 10 GB is ~2.5 billion tokens, so $12,500+ before any output (as of Sept 2026). Batch and cache discounts shave the token bill but cannot close five orders of magnitude, because the routes sell different things: one runs proven logic, the other re-buys judgment per run.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">2 · Bottom to top, Rogati's hierarchy of needs runs:</p>
+      <button class="qopt" type="button">A · Collect, move/store, explore/transform, aggregate/label, learn/optimize, AI</button>
+      <button class="qopt" type="button">B · Collect, aggregate/label, move/store, learn/optimize, explore/transform, AI</button>
+      <button class="qopt" type="button">C · AI first as the strategy, then collect whatever data the models turn out to need</button>
+      <p class="qwhy">Collect at the base, then move/store, explore/transform, aggregate/label, learn/optimize, and AI at the tip. Her framing: AI is the self-actualization of the data hierarchy, and you need food, water and shelter first. Option C is what the pyramid was drawn to prevent.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">3 · A ticket reads "the app eats my notes". Why does the free tier's keyword counter fail here?</p>
+      <button class="qopt" type="button">A · It does not - adding "eats" to the keyword list fixes this class of problem</button>
+      <button class="qopt" type="button">B · The counter fails only at scale; under 1,000 tickets keywords are reliable</button>
+      <button class="qopt" type="button">C · Meaning has no writable rule: the ticket describes data loss without containing the string, and every paraphrase is a fresh miss</button>
+      <p class="qwhy">"App eats my notes" is a data-loss report that never matches "data loss". Adding "eats" catches one phrasing and misses the next thousand - chasing paraphrases with keywords is judgment work in a deterministic costume. This is a genuine no on Q1, which is precisely what hands the work up the ladder.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ OFFICIAL COVERAGE ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">BigQuery on-demand pricing</span><span class="note">$6.25 per TiB, first TiB free, and the $0.06 vs $12,500+ course math - all date-stamped Sept 2026</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Rogati, The AI Hierarchy of Needs</span><span class="note">All six layers walked against Cadence's stack, with the self-actualization framing</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Kozyrkov on when not to use ML</span><span class="note">The human-made-rules boundary applied to the deterministic pile, paraphrased faithfully</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Official API pricing, Sept 2026</span><span class="note">Used here only for the input-token rate; session 5 does the full token math on real model prices</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Full source map with every URL and every honesty caveat: <span class="mono">materials/official-course-map.md</span> in this repo.</p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 2 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The six-cent question</b><span>10 GB scanned: ~$0.06 at $6.25/TiB. The same bytes as LLM input: ~2.5B tokens, $12,500+. As of Sept 2026.</span></div>
+      <div class="cheat-item"><b>Verified once</b><span>Correct by construction: logic checked against the data once, then runs forever. Anyone who reads the logic can audit it.</span></div>
+      <div class="cheat-item"><b>Kozyrkov's boundary</b><span>Problems defined by human-made rules get code, not ML. ML is for rules you cannot articulate but have data to learn.</span></div>
+      <div class="cheat-item"><b>The pyramid, bottom up</b><span>Collect, move/store, explore/transform, aggregate/label, learn/optimize, AI. The tip is self-actualization - eat first.</span></div>
+      <div class="cheat-item"><b>The paraphrase test</b><span>"App eats my notes" never matches "data loss". When paraphrase kills the keyword list, the work goes up the ladder.</span></div>
+      <div class="cheat-item"><b>The tier's own rot</b><span>Dashboard sprawl and stale definitions are the free tier's native failure modes. Maintain the rung you stand on.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Next session</span>
+    <p>The free tier just took four of Cadence's ten workloads for pocket change. Three more - churn, the ticket-volume forecast, anomalous API usage - have no writable rule at all, and they are still not LLM work. Session 3 is the middle rung: models you can test on the past before trusting on the future, three papers of evidence on tabular data, and one $62-a-month inference box that turns out to be the cheapest trustworthy configuration in the whole simulator.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Session 2 of 6 · learn-when-ai-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="../index.html">← All sessions</a> &nbsp;·&nbsp; <a href="01-the-triage-question.html">Prev: The triage question</a> &nbsp;·&nbsp; <a href="03-when-classic-ml-wins.html">Next: When classic ML wins →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Session 6 of 6. The full routing decision tree, the live backlog simulator with real cost math, and the standing playbook: true cost from $2,315 to $416 while trust climbs from 0/10 to 10/10.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="The routing playbook - learn when ai with phoebe">
+<meta property="og:description" content="Session 6 of 6. Route the whole backlog live: true cost $2,315 to $416 while trust climbs 0/10 to 10/10.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-when-ai-with-phoebe/courses/06-the-routing-playbook.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-when-ai-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The routing playbook - learn when ai with phoebe">
+<meta name="twitter:description" content="Session 6 of 6. Route the whole backlog live, with real cost math.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-when-ai-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Session 6 · The routing playbook - learn when ai with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-when-ai-with-phoebe</a> / Session 6 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn When AI with Phoebe · Session 6 of 6</div>
+    <h1>The routing <span class="accent">playbook</span></h1>
+    <p class="sub">Five sessions built five routing rules. Tonight they run together, live, against Cadence's whole backlog: watch the true monthly cost fall from $2,315 to $416 while the answers you can trust climb from zero out of ten to ten out of ten. Then the playbook becomes yours - a one-page decision tree, a standing review cadence, and the discipline to keep the routing honest after the course ends.</p>
+    <div class="chip-row">
+      <span class="chip level">🔴 Capstone</span>
+      <span class="chip audience">Everyone who triaged in session 1</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-18 · The tree, assembled</span>
+      <span class="a3" style="flex:5">18-40 · Build-along: route the backlog live</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where the five rules came from</h2>
+    </div>
+    <p class="lede">Each session contributed exactly one lever to tonight's simulator. Session 1: the triage question. Session 2: free tier first. Session 3: the classic ML check. Session 4: the GenAI fit test. Session 5: count the full cost. Tonight is the first time all five run at once, and the first time you see what each is worth in dollars and trust.</p>
+
+    <div class="legend">
+      <span class="pill">🎫 Clear all three quiz questions for the final stamp</span>
+      <span class="pill">Live = presented in the 45 minutes</span>
+      <span class="pill">Self-study = the full depth, after class</span>
+    </div>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> A routing playbook your organization can actually hold: the one-page tree, the numbers that justify it rung by rung, and the review cadence that keeps a routing decision honest after the workload underneath it changes.</p>
+    </div>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>What the five rules are, in one breath each<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>S1 · The triage question.</strong> Can the logic be written down, and is the definition aligned? Two yeses mean deterministic work. This rule alone converts silent errors into caught errors, because you now know which answers are checkable.</li>
+          <li><strong>S2 · Free tier first.</strong> Verified plus aligned goes to the dashboard. Not because it is humble, but because verified-once-then-cents is an economic property no model can match.</li>
+          <li><strong>S3 · The classic ML check.</strong> Structured prediction from history goes to a trained, backtested model. The middle rung is the cheapest trustworthy home for pattern work.</li>
+          <li><strong>S4 · The GenAI fit test.</strong> Unstructured language and judgment goes to the LLM, and the money spent there is money well spent. This course is a router, not a refusal.</li>
+          <li><strong>S5 · Count the full cost.</strong> Every probabilistic route carries its eval set and monitoring on its back. The honest number is bigger, and it is the only number worth budgeting.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 1 ============ -->
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers the assembled tree</span>
+      <h2>The one-page decision tree</h2>
+      <span class="tag concept">8 min live</span>
+    </div>
+    <p class="lede">This is the whole course on one page. It routes a workload in under a minute, and every branch carries the session that justifies it, so when someone challenges a routing decision, the answer is a page number rather than an opinion.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The full routing decision tree: triage question first, then free tier, classic ML, GenAI fit, with full-cost accounting applied to every probabilistic route">
+        <style>
+          .w6tB { font: 700 12px Inter, sans-serif; fill: #fff; }
+          .w6tK { font: 700 12px Inter, sans-serif; fill: #1C1917; }
+          .w6tS { font: 600 11px Inter, sans-serif; fill: #B45309; }
+          .w6tN { font: 400 12px Inter, sans-serif; fill: #6B7280; }
+        </style>
+        <defs>
+          <marker id="w6Ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#D6D3D1"/></marker>
+        </defs>
+        <rect x="340" y="20" width="200" height="36" rx="10" fill="#78350F"/>
+        <text class="w6tB" x="440" y="43" text-anchor="middle">Workload arrives</text>
+        <line x1="440" y1="56" x2="440" y2="84" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w6Ar)"/>
+        <rect x="290" y="88" width="300" height="38" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="1.5"/>
+        <text class="w6tK" x="440" y="112" text-anchor="middle">Writable logic + aligned definition?</text>
+        <text class="w6tS" x="240" y="112" text-anchor="end">S1</text>
+        <line x1="290" y1="107" x2="180" y2="160" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w6Ar)"/>
+        <text class="w6tS" x="230" y="144">yes</text>
+        <line x1="590" y1="107" x2="660" y2="160" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w6Ar)"/>
+        <text class="w6tS" x="636" y="140">no</text>
+        <rect x="60" y="164" width="240" height="60" rx="12" fill="#166534"/>
+        <text class="w6tB" x="180" y="190" text-anchor="middle">DASHBOARD / SQL / RULES</text>
+        <text class="w6tB" x="180" y="210" text-anchor="middle" style="font-weight:400">S2 · verify once, run for cents</text>
+        <rect x="510" y="164" width="300" height="38" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="1.5"/>
+        <text class="w6tK" x="660" y="188" text-anchor="middle">Pattern in history, or judgment?</text>
+        <line x1="590" y1="202" x2="480" y2="256" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w6Ar)"/>
+        <text class="w6tS" x="512" y="234">pattern</text>
+        <line x1="730" y1="202" x2="760" y2="256" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w6Ar)"/>
+        <text class="w6tS" x="758" y="234">judgment</text>
+        <rect x="360" y="260" width="240" height="60" rx="12" fill="#B45309"/>
+        <text class="w6tB" x="480" y="286" text-anchor="middle">CLASSIC ML</text>
+        <text class="w6tB" x="480" y="306" text-anchor="middle" style="font-weight:400">S3 · trained, backtested, cheap</text>
+        <rect x="640" y="260" width="200" height="60" rx="12" fill="#334155"/>
+        <text class="w6tB" x="740" y="286" text-anchor="middle">GENAI / LLM</text>
+        <text class="w6tB" x="740" y="306" text-anchor="middle" style="font-weight:400">S4 · start small, cascade up</text>
+        <rect x="360" y="356" width="480" height="42" rx="10" fill="#FDE68A"/>
+        <text class="w6tK" x="600" y="382" text-anchor="middle">S5 · both probabilistic routes carry evals + monitoring in the price</text>
+        <line x1="480" y1="320" x2="520" y2="356" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w6Ar)"/>
+        <line x1="740" y1="320" x2="700" y2="356" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w6Ar)"/>
+        <text class="w6tN" x="60" y="430">A contested definition stops the tree entirely: alignment is a meeting, not a model, and no rung fixes it.</text>
+        <text class="w6tN" x="60" y="450">Print this. When a routing decision is challenged, the defense is a branch on this page.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the whole course as one decision tree</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The cascade: what "start small" means on the GenAI branch<span class="mini">5 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Even after a workload correctly lands on the GenAI branch, the routing is not finished, because the branch has rungs of its own: rules where they hold, a small model where it suffices, the frontier model only where it earns its price. Two real, published escalation stories:</p>
+        <ul>
+          <li><strong>Checkr</strong> routed background-check classification off GPT-4 onto a fine-tuned Llama-3-8B: roughly $12,000 a month down to under $800, about 30x faster, and accuracy on the hardest record class up from the 55 to 72 percent range to 85 to 90 percent plus. Reported by Computerworld, with the caveat that the fine-tuning vendor was involved in the telling.</li>
+          <li><strong>Google Cloud</strong> published the same shape for analytical SQL: replace the majority of per-row LLM calls with lightweight proxy models and escalate only the uncertain rows - more than 100x cheaper and faster on the workloads they show.</li>
+        </ul>
+        <div class="callout tip">
+          <p><strong>The cascade rule.</strong> The frontier model is the specialist you consult, not the front desk. Route every item to the cheapest tier that can handle it, and escalate the residue. Both published cases put the savings between 5x and 100x with accuracy flat or better.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Portfolio triage: routing at the roadmap level<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The same tree that routes a workload routes a quarter's initiative list. Two questions per initiative: which tier does the core work actually live on, and what is the full-cost number at that tier? Then three honest buckets:</p>
+        <table class="clean">
+          <tr><th>Bucket</th><th>What it looks like</th><th>The leader's move</th></tr>
+          <tr><td><strong>Fund</strong></td><td>Judgment work with a real fit test passed, cascade designed, evals budgeted</td><td>Spend confidently - this is the 5 percent that reaches the P&amp;L</td></tr>
+          <tr><td><strong>Reroute</strong></td><td>Deterministic or pattern work wearing an AI costume</td><td>Deliver it a rung down, bank the difference, keep the credibility</td></tr>
+          <tr><td><strong>Stop</strong></td><td>Contested definitions, no data, or beyond the state of the art</td><td>Name the real blocker - RAND's causes 1, 2 and 5 - and fix that instead</td></tr>
+        </table>
+        <p>The reroute bucket is the politically hard one, because it means telling someone their AI project is a dashboard. The playbook makes that conversation survivable: the routing is a documented decision with numbers, not a taste judgment.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Build-along</span>
+      <h2>Route the backlog, live</h2>
+      <span class="tag demo">★ 22 min · everyone builds</span>
+    </div>
+    <p class="lede">The full simulator. Ten workloads, five routing rules, one anti-lever. The dashboard answers below are genuinely computed from the embedded dataset when you route them there, and every price is a real published rate. Have your session 1 paper triage next to you - tonight it gets scored.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The expected ladder: true monthly cost falls from 2315 dollars at baseline to 416 with all five rules on, while trusted answers climb from zero to ten out of ten">
+        <style>
+          .w6lL { font: 600 11px Inter, sans-serif; fill: #1C1917; }
+          .w6lV { font: 800 12px Inter, sans-serif; fill: #1C1917; }
+          .w6lT { font: 700 11px Inter, sans-serif; fill: #166534; }
+          .w6lN { font: 400 12px Inter, sans-serif; fill: #6B7280; }
+          .w6lH { font: 700 11px Inter, sans-serif; fill: #6B7280; letter-spacing: .05em; }
+        </style>
+        <text class="w6lH" x="60" y="40">TRUE MONTHLY COST PER CONFIG · TRUST SHOWN UNDER EACH BAR</text>
+        <rect x="70" y="60" width="90" height="160" rx="6" fill="#991B1B"/>
+        <text class="w6lV" x="115" y="86" text-anchor="middle" fill="#fff" style="fill:#fff">$2,315</text>
+        <text class="w6lL" x="115" y="240" text-anchor="middle">baseline</text>
+        <text class="w6lT" x="115" y="258" text-anchor="middle" fill="#991B1B">0/10</text>
+        <rect x="200" y="204" width="90" height="16" rx="5" fill="#B45309"/>
+        <text class="w6lV" x="245" y="196" text-anchor="middle">$225</text>
+        <text class="w6lL" x="245" y="240" text-anchor="middle">+S1 triage</text>
+        <text class="w6lT" x="245" y="258" text-anchor="middle" fill="#B45309">0/10 caught</text>
+        <rect x="330" y="204" width="90" height="16" rx="5" fill="#B45309"/>
+        <text class="w6lV" x="375" y="196" text-anchor="middle">$224</text>
+        <text class="w6lL" x="375" y="240" text-anchor="middle">+S2 free tier</text>
+        <text class="w6lT" x="375" y="258" text-anchor="middle">4/10</text>
+        <rect x="460" y="214" width="90" height="6" rx="3" fill="#166534"/>
+        <text class="w6lV" x="505" y="204" text-anchor="middle">$62</text>
+        <text class="w6lL" x="505" y="240" text-anchor="middle">+S3 classic ML</text>
+        <text class="w6lT" x="505" y="258" text-anchor="middle">7/10</text>
+        <rect x="590" y="208" width="90" height="12" rx="5" fill="#166534"/>
+        <text class="w6lV" x="635" y="200" text-anchor="middle">$176</text>
+        <text class="w6lL" x="635" y="240" text-anchor="middle">+S4 GenAI fit</text>
+        <text class="w6lT" x="635" y="258" text-anchor="middle">10/10</text>
+        <rect x="720" y="192" width="90" height="28" rx="5" fill="#166534"/>
+        <text class="w6lV" x="765" y="184" text-anchor="middle">$416</text>
+        <text class="w6lL" x="765" y="240" text-anchor="middle">+S5 full cost</text>
+        <text class="w6lT" x="765" y="258" text-anchor="middle">10/10 honest</text>
+        <text class="w6lN" x="60" y="292">Your expected path tonight. If your numbers differ from these, a lever is off that you think is on.</text>
+        <text class="w6lN" x="60" y="310">The S5 bar RISES and stays green: the honest number is bigger, and it is the one that survives an audit.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the expected ladder, so you can check the live run against it</figcaption>
+    </figure>
+
+    <div id="router-live"></div>
+
+    <div class="steps">
+      <div class="step"><p><strong>Read the baseline first: $2,315 true cost, zero answers you can trust, seven silently wrong.</strong> This is the 2026 default nobody chose on purpose: metrics flowing to the model because the integration was already open, language work stuck on keyword tooling because it was already there. The API bill is $5 - the damage was never in the token bill.</p></div>
+      <div class="step"><p><strong>Switch on S1, the triage question, and watch the true cost fall to $225 before a single workload moves.</strong> Nothing got rerouted. You simply know which seven answers are checkable, so you check them: silently wrong becomes caught wrong, and $2,310 of cleanup becomes $220 of verification labor. Knowing what is verifiable is worth 10x before any tool changes.</p></div>
+      <div class="step"><p><strong>Switch on S2 and S3.</strong> Free tier first routes the four deterministic workloads to the dashboard - their answers now compute live from the real data, and trust reaches 4/10. The classic ML check moves the three pattern workloads to trained models: $62 true cost, 7/10 trusted, and that $62 is the cheapest trustworthy configuration in the whole simulator. Sit on this rung a moment - this is BI and classic ML carrying seven-tenths of the company.</p></div>
+      <div class="step"><p><strong>Switch on S4 and watch the cost RISE to $176 - and understand why that is correct.</strong> The three judgment workloads move off keyword tooling onto the LLM, and trust reaches 10/10. This is the course's other half: where language and judgment are the actual work, the tokens are the bargain. Routing is not refusal.</p></div>
+      <div class="step"><p><strong>Switch on S5 and let the number get honest: $416.</strong> Nothing moved. The evals, monitoring and drift-watching that every probabilistic route needs just entered the price. The number went up and the budget got MORE defensible, because this is the figure that survives an audit.</p></div>
+      <div class="step"><p><strong>Now the anti-lever: AI-everything.</strong> On top of the full playbook it pays $739 to trust 3 answers out of ten. From the raw baseline it pays $2,429. In every configuration it pays more to trust less - measure it yourself, then quote your own measurement in the next budget meeting.</p></div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>The sentence the whole course compresses into.</strong> The route from $2,315 and 0/10 to $416 and 10/10 never once required refusing AI. It required three workloads' worth of well-placed spending and seven workloads' worth of well-placed restraint.</p>
+    </div>
+
+    <div class="scorecard" data-title="Ship the playbook - the standing before you adopt it" data-foot="This is the strict gate. A no on any row is the work to do before the playbook goes on the wall.">
+      <div class="sc-row"><div class="sc-q">Every workload on the team's backlog carries a written tier and a one-line reason<em>The session 1 triage, finished and kept current.</em></div></div>
+      <div class="sc-row"><div class="sc-q">Every probabilistic route has an eval set and a monitoring owner, priced in<em>S5's rule: no evals budgeted means the route is not approved.</em></div></div>
+      <div class="sc-row"><div class="sc-q">The GenAI routes each passed a written fit test, not a vibe<em>Unstructured language or judgment, with a cascade design.</em></div></div>
+      <div class="sc-row"><div class="sc-q">At least one workload was rerouted DOWN a rung in the last quarter<em>A playbook that only ever escalates is decoration.</em></div></div>
+      <div class="sc-row"><div class="sc-q">There is a named review trigger for every routing decision<em>Volume 10x, definition change, model price change, new failure class.</em></div></div>
+    </div>
+  </section>
+
+  <!-- ============ PART 2 ============ -->
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers keeping it honest</span>
+      <h2>Routing decisions expire</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">A routing decision is correct at a point in time. Volumes grow, definitions drift, model prices fall by half in a year. The playbook needs a review trigger on every route, or it fossilizes into the next generation's "we have always done it this way".</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four triggers that reopen a routing decision: volume shift, definition change, price change, and a new failure class">
+        <style>
+          .w6rH { font: 700 12px Inter, sans-serif; fill: #fff; }
+          .w6rB { font: 400 11px Inter, sans-serif; fill: #FDE68A; }
+          .w6rK { font: 700 12px Inter, sans-serif; fill: #1C1917; }
+          .w6rN { font: 400 12px Inter, sans-serif; fill: #6B7280; }
+        </style>
+        <rect x="60" y="60" width="184" height="120" rx="12" fill="#78350F"/>
+        <text class="w6rH" x="152" y="94" text-anchor="middle">Volume shifts 10x</text>
+        <text class="w6rB" x="152" y="118" text-anchor="middle">the cascade math</text>
+        <text class="w6rB" x="152" y="136" text-anchor="middle">reorders itself</text>
+        <rect x="264" y="60" width="184" height="120" rx="12" fill="#B45309"/>
+        <text class="w6rH" x="356" y="94" text-anchor="middle">Definition changes</text>
+        <text class="w6rB" x="356" y="118" text-anchor="middle">back to the triage</text>
+        <text class="w6rB" x="356" y="136" text-anchor="middle">question, from zero</text>
+        <rect x="468" y="60" width="184" height="120" rx="12" fill="#D97706"/>
+        <text class="w6rH" x="560" y="94" text-anchor="middle">Model price halves</text>
+        <text class="w6rB" x="560" y="118" text-anchor="middle">yesterday's too-dear</text>
+        <text class="w6rB" x="560" y="136" text-anchor="middle">rung may now win</text>
+        <rect x="672" y="60" width="148" height="120" rx="12" fill="#334155"/>
+        <text class="w6rH" x="746" y="94" text-anchor="middle">New failure class</text>
+        <text class="w6rB" x="746" y="118" text-anchor="middle">the eval set was</text>
+        <text class="w6rB" x="746" y="136" text-anchor="middle">blind to something</text>
+        <text class="w6rK" x="60" y="228">Any one trigger fires: re-run the tree for that workload. Quarterly: re-run it for the top ten by spend.</text>
+        <text class="w6rN" x="60" y="258">Prices are the trigger people forget in both directions: a route that was extravagant at 2024 prices</text>
+        <text class="w6rN" x="60" y="278">may be correct at 2026 prices, and the reverse happens when volume grows faster than prices fall.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - four triggers that reopen a routing decision</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The 5 percent, revisited from the finish line<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Session 1 opened with the MIT finding: 95 percent of GenAI pilots never reached the P&amp;L, and the winners picked one pain point and executed. Read it again from here and it is a description of the playbook: the winners routed. They put judgment work, and only judgment work, on the expensive tier, and executed the boring tiers with the respect boring tiers deserve.</p>
+        <p>The standout leader move is not enthusiasm and it is not skepticism. It is a defensible route for every workload, and the willingness to be boring in public about the ones that only needed a WHERE clause.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Running the playbook as a team ritual<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>New workload intake:</strong> the requester answers the two triage questions in the ticket template. Thirty seconds of friction that prevents the default-to-LLM drift permanently.</li>
+          <li><strong>Quarterly re-route:</strong> top ten workloads by spend get the tree re-run. Expect one to move per quarter; celebrate the moves down as loudly as the moves up.</li>
+          <li><strong>The routing changelog:</strong> one line per decision - date, workload, tier, reason, review trigger. This document is what makes the discipline outlive its author, and it is the artifact this course was always building.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>After the course</h2>
+      <span class="tag exercise">45 min</span>
+    </div>
+    <ol>
+      <li><strong>Score your session 1 paper triage against the simulator.</strong> Toggle the full playbook on, compare your ten routes to the live ones, and write down where you differed and why.</li>
+      <li><strong>Draft your one-page tree.</strong> Copy the Part 1 diagram's structure, but with your organization's own workload examples on the branches.</li>
+      <li><strong>Route your team's top five workloads by spend, for real.</strong> Tier, reason, full-cost estimate, review trigger. That document is the playbook, version one.</li>
+      <li><strong>Find your reroute-down candidate.</strong> The politically hard one. Bring the simulator's numbers to the conversation instead of an opinion.</li>
+      <li><strong>Set the quarterly re-route reminder now,</strong> before the discipline evaporates. The playbook that is not on a calendar does not exist.</li>
+    </ol>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three for the final passport stamp.</p>
+
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">1 · Switching on the triage question alone dropped true cost from $2,315 to $225 before any workload changed tier. What produced the saving?</p>
+      <button class="qopt" type="button">A · The LLM answers became more accurate once the team understood them</button>
+      <button class="qopt" type="button">B · Silently wrong became caught wrong: knowing which answers are checkable converts $330-per-incident cleanup into $220 of monthly verification labor</button>
+      <button class="qopt" type="button">C · The API bill fell because fewer tokens were used</button>
+      <p class="qwhy">The API bill barely moved - it was $5 all along. The $2,310 was the cost of confidently wrong numbers reaching decisions unverified, at six analyst-hours per incident to unwind. Triage does not fix the answers; it tells you which ones can be checked, and checkable-and-checked is a different risk class from fluent-and-unverified.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">2 · Switching on the GenAI fit test RAISED the monthly cost from $62 to $176, and the course calls that correct. Why?</p>
+      <button class="qopt" type="button">A · It is a known limitation of the simulator's cost model</button>
+      <button class="qopt" type="button">B · Because higher spend always signals a more mature AI organization</button>
+      <button class="qopt" type="button">C · Because the three judgment workloads were failing on keyword tooling, and the tokens that fix them are money spent where language models genuinely win - trust went from 7/10 to 10/10</button>
+      <p class="qwhy">The $62 configuration was the cheapest trustworthy one, but it left ticket theming, email drafting and transcript extraction on tools that structurally cannot do them. Routing is not refusal: the discipline that saves $1,900 on metrics is the same discipline that spends $114 on judgment work without apology.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · A quarter after adopting the playbook, the LLM vendor halves its prices. What does the playbook say happens next?</p>
+      <button class="qopt" type="button">A · The price-change trigger fires: re-run the tree on affected workloads, because a route that lost the cascade math at old prices may now win it</button>
+      <button class="qopt" type="button">B · Nothing - routing decisions are structural and prices do not affect them</button>
+      <button class="qopt" type="button">C · Move all deterministic workloads to the LLM, since it is now cheaper</button>
+      <p class="qwhy">Price is one of the four standing review triggers, and it cuts both ways. But note what a price change can never do: it cannot make an unverifiable answer verifiable. The deterministic tier keeps its workloads at any token price, because its advantage was never only the money - it was correct-by-construction.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ OFFICIAL COVERAGE ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">The cascade pattern, from two published cases</span><span class="note">Checkr via Computerworld (5x cost, 30x latency, accuracy up), Google Cloud proxy models (100x on analytical SQL), each with its sourcing caveat stated</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">MIT Project NANDA, closed out</span><span class="note">The 5 percent read as routing behavior: one pain point, executed well</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">The simulator's full canon</span><span class="note">Every ladder number verified live in the engine before publication; dashboard answers computed from the embedded data, prices from the official Sept 2026 pricing pages</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Model governance and sign-off design</span><span class="note">Named as the review layer but not taught here - it is its own discipline and its own course</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Full source map with every URL and every honesty caveat: <span class="mono">materials/official-course-map.md</span> in this repo.</p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 6 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The ladder, end to end</b><span>$2,315 and 0/10 trusted at the default. $416 and 10/10 with all five rules on. Never once refused AI.</span></div>
+      <div class="cheat-item"><b>Triage pays first and most</b><span>10x cost reduction before any workload moves, purely from knowing what is checkable.</span></div>
+      <div class="cheat-item"><b>$62 is the anchor</b><span>BI plus classic ML carries 7 of 10 workloads. Quote this before approving any GenAI line item.</span></div>
+      <div class="cheat-item"><b>Spending up is part of routing</b><span>S4 raises the bill and the trust together. The playbook defends the spend as firmly as the savings.</span></div>
+      <div class="cheat-item"><b>The cascade rule</b><span>Cheapest tier that handles it, escalate the residue. Published range: 5x to 100x saved, accuracy flat or better.</span></div>
+      <div class="cheat-item"><b>Routes expire</b><span>Volume 10x, definition change, price change, new failure class. Quarterly re-route, top ten by spend.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">The arc, closed</span>
+    <p>Session 1 asked the question. Sessions 2, 3 and 4 gave each tier its due: the dashboard's verified-once economics, classic ML's cheap trained judgment, GenAI's genuine wins. Session 5 made the accounting honest. Tonight put it all on one page. The mosquito is dead, the nuclear stockpile is intact, and the budget line for the ox-cleaver was approved without a fight - because the routing was written down.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Session 6 of 6 · learn-when-ai-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="05-the-cost-and-risk-math.html">← Prev: The cost and risk math</a> &nbsp;·&nbsp; <a href="../index.html">All sessions</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+<script src="../assets/router-live.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Session 5 of 6. Real token math on real September 2026 prices, the true-cost stack above the API bill, and the energy correction every board paper should carry.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="The cost and risk math - learn when ai with phoebe">
+<meta property="og:description" content="Session 5 of 6. The API bill is the smallest layer: evals, monitoring, verification, and cleanup are the real price of a probabilistic route.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-when-ai-with-phoebe/courses/05-the-cost-and-risk-math.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-when-ai-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The cost and risk math - learn when ai with phoebe">
+<meta name="twitter:description" content="Session 5 of 6. True cost = bill + evals + monitoring + cleanup. Price the routes by hand.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-when-ai-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Session 5 · The cost and risk math - learn when ai with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-when-ai-with-phoebe</a> / Session 5 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn When AI with Phoebe · Session 5 of 6</div>
+    <h1>The cost and risk <span class="accent">math</span></h1>
+    <p class="sub">All ten workloads have homes now: four on the free tier, three on classic ML, three on GenAI with cascades designed. Tonight the accounting gets honest. You price every route by hand on real September 2026 rates, then stack the costs that never appear on the API invoice - evals, monitoring, verification labor, and the cleanup bill behind every silently wrong number. The honest total is bigger than the bill, and it is the one that survives an audit.</p>
+    <div class="chip-row">
+      <span class="chip level">🟠 Hands-on</span>
+      <span class="chip audience">Leaders deciding where AI budget goes</span>
+      <span class="chip audience">Practitioners routing their own work</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:4">3-20 · The true-cost stack</span>
+      <span class="a3" style="flex:5">20-40 · Build-along: price the routes by hand</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Every workload routed, no line yet priced</h2>
+    </div>
+    <p class="lede">Sessions 1 through 4 built the routing. Tonight builds the budget. The difference matters because a routing decision that cannot state its true monthly cost is a decision waiting to be reversed by whoever finds the hidden line items first - usually finance, usually in a bad mood.</p>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> Per-token arithmetic you can do on a napkin with real rates. The four-layer true-cost stack that explains how a $5 API bill became a $2,315 monthly loss. And your own hand-priced total for the whole Cadence backlog, reconciled against the simulator's canon.</p>
+    </div>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The bill is not the cost<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The simulator's baseline configuration has an API bill of five dollars. Its true monthly cost is $2,315. Nothing in that gap is exotic: it is seven silently wrong numbers at $330 of analyst cleanup each. The most expensive line in an AI budget has never once appeared on an AI invoice.</p>
+        <p>Tonight's discipline is simple to state: <strong>price the whole stack, not the meter</strong>. The meter reads tokens. The stack includes the eval set someone maintains, the monitoring someone watches, the checking someone does, and the cleanup someone gets pulled into. A route is not cheap because its meter reads low. It is cheap when the whole stack reads low - and the deterministic tier keeps winning precisely because its stack is almost all zeros.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why honest numbers go up before they go down<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Watch the simulator's arc across the sessions: $2,315 at baseline, $225 after triage, $224 on the free tier, $62 with classic ML, $176 with GenAI fit - and then $416 when full costing arrives. The last step goes UP, and it is the most trustworthy number in the whole table, because it is the first one carrying evals, monitoring, and upkeep on every probabilistic route.</p>
+        <p>A budget that only ever goes down is usually a budget that stopped counting something. The routed config's $416 against the baseline's $2,315 is still better than 5x cheaper - with 10 out of 10 answers trusted instead of 0. That is the two-number story worth telling: the honest number is bigger than the bill, and dramatically smaller than the chaos it replaced.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 1 ============ -->
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers real token math on real prices</span>
+      <h2>The napkin math, with September 2026 rates</h2>
+      <span class="tag concept">7 min live</span>
+    </div>
+    <p class="lede">Token pricing is published, per million tokens, in and out. Everything else is multiplication. The rates below are as of Sept 2026 - prices move, so every quote of them carries the date.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Model pricing tiers drawn as ladder rungs with dollars per million tokens, and BigQuery at the bottom at 6.25 dollars per TiB with the first TiB free">
+        <style>
+          .w5aW { font: 700 12px Inter, sans-serif; fill: #fff; }
+          .w5aK { font: 700 12px Inter, sans-serif; fill: #1C1917; }
+          .w5aS { font: 400 11px Inter, sans-serif; fill: #FDE68A; }
+          .w5aD { font: 400 11px Inter, sans-serif; fill: #1C1917; }
+          .w5aE { font: 600 11px Inter, sans-serif; fill: #B45309; }
+          .w5aN { font: 400 12px Inter, sans-serif; fill: #6B7280; }
+          .w5aH { font: 700 11px Inter, sans-serif; fill: #6B7280; letter-spacing: .05em; }
+        </style>
+        <text class="w5aH" x="40" y="32">$ PER 1M TOKENS, IN / OUT · AS OF SEPT 2026</text>
+        <rect x="40" y="46" width="640" height="44" rx="10" fill="#78350F"/>
+        <text class="w5aW" x="60" y="64">Claude Opus 5 · $5 in / $25 out</text>
+        <text class="w5aS" x="60" y="82">frontier judgment, the top of the cascade</text>
+        <rect x="70" y="100" width="580" height="44" rx="10" fill="#B45309"/>
+        <text class="w5aW" x="90" y="118">gpt-5.6-terra · $2 in / $12 out</text>
+        <text class="w5aS" x="90" y="136">frontier-adjacent alternative</text>
+        <rect x="100" y="154" width="520" height="44" rx="10" fill="#B45309"/>
+        <text class="w5aW" x="120" y="172">Claude Sonnet 5 · $2 in / $10 out</text>
+        <text class="w5aS" x="120" y="190">the simulator's workhorse</text>
+        <rect x="130" y="208" width="440" height="44" rx="10" fill="#D97706"/>
+        <text class="w5aK" x="150" y="226">Claude Haiku 4.5 · $1 in / $5 out</text>
+        <text class="w5aD" x="150" y="244">fast tier for well-scoped judgment</text>
+        <rect x="160" y="262" width="360" height="44" rx="10" fill="#FDE68A"/>
+        <text class="w5aK" x="180" y="280">gpt-5-mini · $0.25 in / $2 out</text>
+        <text class="w5aD" x="180" y="298">the cascade's cheap first stop</text>
+        <rect x="40" y="322" width="640" height="44" rx="10" fill="#166534"/>
+        <text class="w5aW" x="60" y="340">BigQuery · $6.25 per TiB scanned</text>
+        <text class="w5aS" x="60" y="358">first TiB each month is free - the deterministic tier lives here</text>
+        <text class="w5aE" x="700" y="64">Batch API:</text>
+        <text class="w5aE" x="700" y="80">50% off</text>
+        <text class="w5aE" x="700" y="108">Cache hits:</text>
+        <text class="w5aE" x="700" y="124">0.1x input</text>
+        <text class="w5aN" x="40" y="396">Every rung is a real published rate. Newer tokenizers produce roughly 30% more tokens</text>
+        <text class="w5aN" x="40" y="414">for the same text across generations - budget the headroom, not just the sticker.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the price ladder as of Sept 2026, with BigQuery underneath it all</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The rate card, date-stamped<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Five model rates and one query rate cover everything Cadence runs. All figures as of Sept 2026, from the official pricing pages:</p>
+        <table class="clean">
+          <tr><th>Engine</th><th>Input / 1M tokens</th><th>Output / 1M tokens</th><th>Note</th></tr>
+          <tr><td>Claude Opus 5</td><td>$5</td><td>$25</td><td>frontier tier</td></tr>
+          <tr><td>gpt-5.6-terra</td><td>$2</td><td>$12</td><td>frontier-adjacent</td></tr>
+          <tr><td>Claude Sonnet 5</td><td>$2</td><td>$10</td><td>the simulator's workhorse</td></tr>
+          <tr><td>Claude Haiku 4.5</td><td>$1</td><td>$5</td><td>fast tier</td></tr>
+          <tr><td>gpt-5-mini</td><td>$0.25</td><td>$2</td><td>cheap cascade entry</td></tr>
+          <tr><td>BigQuery</td><td colspan="2">$6.25 per TiB scanned</td><td>first 1 TiB/month free</td></tr>
+        </table>
+        <p>Two published discounts change real budgets: the <strong>Batch API takes 50 percent off</strong> anything that can wait, and <strong>cache hits price input at 0.1x</strong> - a repeated system prompt costs a tenth of a fresh one. And one quiet tax: newer tokenizers produce roughly 30 percent more tokens for the same text across generations, so a budget built on sticker rates alone runs hot.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Two worked lines from Cadence's budget<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>Transcript action-item extraction, on Sonnet 5.</strong> About 660 runs a month, each around 9,000 tokens in and 500 out. That is 2.3 cents of tokens per run - roughly $15 a month of raw tokens, and with the 30 percent tokenizer headroom budgeted in, the line Cadence carries is <strong>about $20 a month</strong>. For themed, captured commitments out of every meeting the product records.</p>
+        <p><strong>Personalized onboarding emails.</strong> Only 30 runs a month, but each one reads the customer's full context: about 90,000 tokens in and 300,000 out across drafting and revision. That is 2.7M input ($5.40) plus 9M output ($90) - <strong>about $95 a month, the biggest GenAI line in the budget, and worth it</strong>: it is the one workload where every generated word is the deliverable.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>Now the contrast that keeps the whole course honest. Cadence's entire deterministic tier - every metric, threshold, and reconciliation on the backlog - runs inside BigQuery's free first TiB, and the simulator's bill line for it reads roughly $4 a month. The most trustworthy answers in the company are also very nearly the cheapest. That is not a coincidence; it is what verified-once economics look like on an invoice.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2 ============ -->
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers the true-cost stack</span>
+      <h2>The API bill is the smallest layer</h2>
+      <span class="tag concept">6 min live</span>
+    </div>
+    <p class="lede">Token math prices the meter. The true cost of a probabilistic route stacks three more layers on top of it, and the baseline's $2,315 came almost entirely from the layer nobody budgets.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two stacked bars decomposing true monthly cost: baseline 2315 dollars is a 5 dollar bill plus 2310 dollars of cleanup; routed 416 dollars is a 176 dollar bill plus 240 dollars of upkeep">
+        <style>
+          .w5bW { font: 700 12px Inter, sans-serif; fill: #fff; }
+          .w5bK { font: 700 12px Inter, sans-serif; fill: #1C1917; }
+          .w5bR { font: 600 12px Inter, sans-serif; fill: #991B1B; }
+          .w5bT { font: 800 14px Inter, sans-serif; fill: #78350F; }
+          .w5bN { font: 400 12px Inter, sans-serif; fill: #6B7280; }
+          .w5bH { font: 700 11px Inter, sans-serif; fill: #6B7280; letter-spacing: .05em; }
+        </style>
+        <text class="w5bH" x="40" y="32">TRUE MONTHLY COST, DECOMPOSED · SAME BACKLOG, TWO CONFIGURATIONS</text>
+        <text class="w5bT" x="260" y="62" text-anchor="middle">Baseline: $2,315</text>
+        <rect x="180" y="72" width="160" height="322" fill="#FCA5A5"/>
+        <text class="w5bR" x="260" y="220" text-anchor="middle">cleanup of 7 silently</text>
+        <text class="w5bR" x="260" y="240" text-anchor="middle">wrong numbers</text>
+        <text class="w5bR" x="260" y="260" text-anchor="middle">7 x $330 = $2,310</text>
+        <rect x="180" y="394" width="160" height="6" fill="#B45309"/>
+        <line x1="340" y1="397" x2="420" y2="397" stroke="#D6D3D1" stroke-width="2"/>
+        <text class="w5bK" x="428" y="392">API + query bill: $5</text>
+        <text class="w5bN" x="428" y="410">barely visible - that is the point</text>
+        <text class="w5bT" x="620" y="62" text-anchor="middle">Routed + costed: $416</text>
+        <rect x="540" y="338" width="160" height="34" fill="#D97706"/>
+        <text class="w5bK" x="708" y="352">eval + monitoring upkeep</text>
+        <text class="w5bK" x="708" y="368">6 x $40 = $240</text>
+        <rect x="540" y="372" width="160" height="28" fill="#B45309"/>
+        <text class="w5bW" x="620" y="391" text-anchor="middle">bill $176</text>
+        <line x1="40" y1="400" x2="840" y2="400" stroke="#D6D3D1" stroke-width="2"/>
+        <text class="w5bN" x="40" y="432">Left: a tiny bill under a tower of cleanup. Right: an honest bill plus honest upkeep, 10/10 trusted.</text>
+        <text class="w5bN" x="40" y="452">The two-number honesty: quote the bill AND the stack, every time. Simulator canon, verified in engine.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - $2,315 decomposed against $416 decomposed: where the money actually goes</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The four layers, priced<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Every probabilistic route carries the full stack. Every deterministic route skips almost all of it:</p>
+        <ul>
+          <li><strong>Layer 1 · The bill.</strong> Tokens and queries, from Part 1's rate card. The only layer with an invoice.</li>
+          <li><strong>Layer 2 · Evals and monitoring: $40 per probabilistic workload per month.</strong> An eval set someone maintains and a dashboard someone watches. A probabilistic route with no evals budgeted is a route that has not been approved - it has just not failed loudly yet. Cadence's six probabilistic workloads carry 6 x $40 = $240, which is exactly the gap between the $176 bill and the $416 true cost.</li>
+          <li><strong>Layer 3 · Verification labor: $220 a month</strong> whenever checkable answers flow through an LLM. If a human must re-derive the number to trust it, the route is paying twice for one answer - which is the accounting argument for never sending checkable work there in the first place.</li>
+          <li><strong>Layer 4 · Cleanup: $330 per silently wrong number</strong> - six analyst-hours of finding it, tracing it, and repairing what it touched. Seven of these made the baseline $2,315 while its bill read $5.</li>
+        </ul>
+        <div class="callout tip">
+          <p><strong>Error-cost asymmetry is the risk half of the math.</strong> A wrong ticket theme wastes minutes and self-corrects at the next spot-check. A wrong revenue number reaches a decision, and the decision does not reconcile itself. Price the blast radius of a miss, not just the frequency - it is why the human gate from session 4 sits on emails and not on theme labels.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The trillion-dollar version of the same question<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The stack scales up. Goldman Sachs' 2024 report "Gen AI: Too Much Spend, Too Little Benefit?" is the same accounting argument at macro size, and it is a genuine debate inside one document. Jim Covello, the skeptic, argues that roughly $1 trillion of AI capex has "little to show for it so far" and that AI is not designed to solve the complex problems that would justify the costs. Daron Acemoglu, in the same issue, estimates under 5 percent of tasks profitably automatable and around 0.9 percent GDP impact over a decade.</p>
+        <p>And in the SAME report, Goldman's own analysts - Briggs, Rangan, and Sheridan - argue the bull side. Quote it as a debate or do not quote it at all: a board paper citing only Covello is as unbalanced as one citing only the bulls. The lesson a router takes from it is neither camp's headline: <strong>the spend is real, the returns are concentrated, and honest stack-level accounting is how you land on the right side of the concentration</strong>. Cadence's $416 against $2,315 is the same story with fewer zeros.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3 ============ -->
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers the energy correction</span>
+      <h2>The energy number, corrected - and why the correction is the lesson</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">One more cost line circulates in every AI debate: energy per query. The number most people quote is stale, the measured number is far smaller, and knowing which is which is the same epistemic skill this whole course trains.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two bars comparing the superseded 2.9 watt-hour estimate per query with measured production numbers of 0.24 to 0.3 watt-hours, with a correction arrow and a median-versus-mean caution">
+        <style>
+          .w5cK { font: 700 12px Inter, sans-serif; fill: #1C1917; }
+          .w5cW { font: 700 12px Inter, sans-serif; fill: #fff; }
+          .w5cR { font: 700 12px Inter, sans-serif; fill: #991B1B; }
+          .w5cG { font: 700 12px Inter, sans-serif; fill: #166534; }
+          .w5cN { font: 400 12px Inter, sans-serif; fill: #6B7280; }
+          .w5cH { font: 700 11px Inter, sans-serif; fill: #6B7280; letter-spacing: .05em; }
+        </style>
+        <defs>
+          <marker id="w5cAr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#166534"/></marker>
+        </defs>
+        <text class="w5cH" x="40" y="32">ENERGY PER TEXT PROMPT, Wh</text>
+        <text class="w5cK" x="40" y="72">Circulating estimate (EPRI 2024 lineage)</text>
+        <rect x="40" y="82" width="620" height="40" rx="8" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="1.5"/>
+        <text class="w5cR" x="56" y="107">2.9 Wh "per ChatGPT query, 10x a Google search" - SUPERSEDED</text>
+        <text class="w5cK" x="40" y="182">Measured in production, Google, Aug 2025</text>
+        <rect x="40" y="192" width="52" height="40" rx="8" fill="#166534"/>
+        <text class="w5cG" x="104" y="217">0.24 Wh median Gemini text prompt · 0.03 gCO2e · 0.26 mL water</text>
+        <text class="w5cK" x="40" y="292">Estimated from usage, Epoch AI, Feb 2025</text>
+        <rect x="40" y="302" width="64" height="40" rx="8" fill="#166534"/>
+        <text class="w5cG" x="116" y="327">~0.3 Wh typical GPT-4o query</text>
+        <line x1="700" y1="122" x2="700" y2="188" stroke="#166534" stroke-width="2" marker-end="url(#w5cAr)"/>
+        <text class="w5cG" x="712" y="150">measurement</text>
+        <text class="w5cG" x="712" y="166">replaced estimate</text>
+        <text class="w5cN" x="40" y="366">Per-prompt energy fell 33x in 12 months (Google). Caution: these are MEDIANS for text prompts -</text>
+        <text class="w5cN" x="40" y="386">median is not mean, and agentic or long-context runs land far heavier. Quote the number with its date.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the stale estimate versus the measured numbers, and the caution that travels with them</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>What the measured numbers say<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The figure everyone has heard - <strong>2.9 Wh per ChatGPT query, ten times a Google search</strong> - traces to 2024-era estimation (EPRI lineage), built before anyone with production telemetry had published. It has since been superseded by measurement. Google's August 2025 study of live production traffic puts the <strong>median Gemini text prompt at 0.24 Wh, 0.03 grams of CO2e, and 0.26 milliliters of water</strong> - and reports per-prompt energy down <strong>33x in twelve months</strong>. Epoch AI's independent estimate lands in the same neighborhood: a typical GPT-4o query around <strong>0.3 Wh</strong>.</p>
+        <p>Two honest qualifiers travel with the good news. These are <strong>medians for text prompts</strong> - median is not mean, and agentic or long-context workloads run far heavier than the typical chat turn. And the 33x trend means any number, alarming or reassuring, goes stale fast: quote it with its date or not at all.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The correction is the transferable skill<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Here is why an energy footnote earns a section in a costing session: quoting the stale 2.9 Wh figure in a board paper is <strong>the same failure as quoting "95 percent of pilots fail" without its learning-gap caveat</strong>. Both numbers were once defensible. Both acquired better evidence. Both keep circulating because they are vivid, and a leader who repeats either one unrefreshed has told the room something false while citing a real source.</p>
+        <p>The hygiene that fixes both is identical: prefer measurement over estimation when measurement exists, carry the date on every number, and carry the distributional caveat - median is not mean, a pilot statistic is not a capability statistic. A routing playbook is only as credible as the sloppiest number quoted in its defense.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>Cadence's sustainability-minded board member arrived with the 10x-a-Google-search line and a proposal to freeze all GenAI spend. The data lead did not argue values - she updated the number: measured medians, dated, caveats attached, next to the true-cost stack showing exactly which three workloads earn their tokens. The freeze became a monitoring line item. Better numbers, calmly delivered, are the whole job.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Build-along</span>
+      <h2>Price the routes, by hand</h2>
+      <span class="tag demo">★ 20 min · everyone builds</span>
+    </div>
+    <p class="lede">Napkins out. Every number you need is on this page: the rate card, the stack layers, and the simulator canon to reconcile against. If your hand total and the canon disagree, one of you has forgotten a layer - and it is usually not the simulator.</p>
+
+    <div class="steps">
+      <div class="step"><p><strong>Price transcript extraction on three engines.</strong> 660 runs x (9,000 in + 500 out) tokens. On Sonnet 5 ($2/$10) that is about $15 of raw tokens; on Haiku 4.5 ($1/$5) about $7.60; on gpt-5-mini ($0.25/$2) about $2.10. That spread IS session 4's cascade in dollars - and the question "which tier is capable enough" is now worth a precise answer, because you know what the answer costs.</p></div>
+      <div class="step"><p><strong>Add the upkeep layer and re-total.</strong> Every probabilistic route carries $40 a month of eval and monitoring upkeep - no exceptions, or the route is not approved. Cadence has six probabilistic workloads: add $240 to whatever your token math said. Notice how upkeep dwarfs the token bill on the small lines: the extraction route's real price is upkeep-dominated at any tier.</p></div>
+      <div class="step"><p><strong>Price one silent miss against a year of the query.</strong> One silently wrong revenue number costs $330 of cleanup - six analyst-hours. The BigQuery query that gets the same number right runs inside the free TiB, effectively $0 per run, on a deterministic tier whose whole bill line is about $4 a month. One incident outcosts months of the tier that never has incidents. Write that ratio down; it is the sharpest sentence in your budget defense.</p></div>
+      <div class="step"><p><strong>Reconcile against the canon.</strong> Bill $176 for the routed config, plus 6 x $40 upkeep = $416 true cost, 10/10 trusted, zero silently wrong. If you landed above, you double-counted verification - the routed config sends no checkable answers through an LLM, so the $220 verify line is $0 by design. If you landed below, find the probabilistic workload you forgot to charge upkeep on.</p></div>
+      <div class="step"><p><strong>Write the one-line budget defense.</strong> "The honest number is bigger and it is the one that survives an audit." Then put both numbers under it: $416 fully costed against the baseline's $2,315 fully costed - better than 5x cheaper, with every answer trusted. A bill-only comparison would have looked even more flattering, and it would have deserved exactly the scrutiny it got.</p></div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>Keep the napkin.</strong> Session 6 runs the entire backlog live in the simulator, lever by lever, and your hand-priced totals are the check against the machine. A router who can reproduce the number on paper is a router nobody can bluff.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Before session 6</h2>
+      <span class="tag exercise">30 min</span>
+    </div>
+    <ol>
+      <li><strong>Price one real LLM workload from your own shop</strong> - runs per month, tokens in and out, on two different tiers from the rate card. Date-stamp it "as of Sept 2026".</li>
+      <li><strong>Stack it honestly.</strong> Add $40 upkeep if it is probabilistic, $220 if humans verify checkable outputs from it, and estimate what one silent miss would cost your team to clean up.</li>
+      <li><strong>Find your organization's $2,315.</strong> Somewhere a small bill hides a large true cost - an unowned automation whose errors someone quietly mops up. Name the mop.</li>
+      <li><strong>Read the Goldman Top of Mind issue, both sides.</strong> Covello's case and the bull case in the same document. Practice summarizing it in one sentence that a listener could not guess your position from.</li>
+      <li><strong>Optional:</strong> find one AI statistic you have repeated in the last year and check whether it has been superseded. The 2.9 Wh exercise, on a number of your own.</li>
+    </ol>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and session 5 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · A workload runs 100 times a month at 10,000 tokens in and 1,000 tokens out per run, on Claude Sonnet 5 ($2 in / $10 out per 1M tokens, as of Sept 2026). Raw token cost?</p>
+      <button class="qopt" type="button">A · About $30 a month - a million input tokens at $2 plus output at $28</button>
+      <button class="qopt" type="button">B · About $12 a month - 1.1M total tokens at a blended $11 per million</button>
+      <button class="qopt" type="button">C · About $3 a month - 1M input tokens ($2) plus 0.1M output tokens ($1)</button>
+      <p class="qwhy">100 x 10,000 = 1M input tokens = $2. 100 x 1,000 = 0.1M output tokens at $10/M = $1. Total $3. Input and output are priced separately - never blend them - and the true cost adds $40 of eval and monitoring upkeep on top, which at this volume is thirteen times the token bill.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">2 · The baseline configuration's true cost is $2,315 a month while its API bill is $5. Which layer created the gap?</p>
+      <button class="qopt" type="button">A · Cleanup: seven silently wrong numbers at $330 each - six analyst-hours per incident - is $2,310 of the total</button>
+      <button class="qopt" type="button">B · Eval and monitoring upkeep across the ten workloads</button>
+      <button class="qopt" type="button">C · Hidden token surcharges that the provider bills separately from the API meter</button>
+      <p class="qwhy">7 x $330 = $2,310, plus the $5 bill, is the whole $2,315. The baseline pays almost nothing to the API and a fortune to the analysts who mop up after it. Upkeep is the honest routed config's story ($240 of the $416); the baseline never budgeted evals at all, which is exactly why it is mopping.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">3 · A board paper says "each AI query burns 2.9 Wh, ten times a Google search." What is the correct 2026 response?</p>
+      <button class="qopt" type="button">A · Agree - it is the most widely cited figure, so it is the safest one to publish</button>
+      <button class="qopt" type="button">B · Update it: measured production medians are ~0.24 Wh (Google, Aug 2025) to ~0.3 Wh (Epoch AI), down 33x in 12 months - while noting these are medians for text prompts, and heavy agentic runs cost far more</button>
+      <button class="qopt" type="button">C · Delete the energy line entirely - per-query energy is unknowable from outside the labs</button>
+      <p class="qwhy">The 2.9 Wh figure (EPRI 2024 lineage) is superseded by measured production data, so repeating it unrefreshed is quoting a stale number from a real source - the same failure as "95% fail" without its caveat. But B keeps the caveats too: median is not mean, text prompts are not agentic runs, and every energy number needs its date attached.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ OFFICIAL COVERAGE ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Goldman Sachs, Too Much Spend Too Little Benefit</span><span class="note">Covello's skeptic case and the same report's bull side, taught as the debate it is - never one-sided</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Official API pricing, Anthropic and OpenAI</span><span class="note">All rates fetched Sept 2026 and date-stamped, with batch, cache, and tokenizer-headroom notes</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">BigQuery pricing</span><span class="note">$6.25 per TiB with the first TiB free - the deterministic tier's whole economics, date-stamped</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Energy per query: Google Aug 2025, Epoch AI, EPRI</span><span class="note">The measured 0.24-0.3 Wh medians superseding the 2.9 Wh estimate, with the median-not-mean caution</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Full source map with every URL and every honesty caveat: <span class="mono">materials/official-course-map.md</span> in this repo.</p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 5 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The rate card, dated</b><span>Sonnet 5 $2/$10, Opus 5 $5/$25, Haiku 4.5 $1/$5, gpt-5.6-terra $2/$12, gpt-5-mini $0.25/$2 per 1M tokens; BigQuery $6.25/TiB, first TiB free. As of Sept 2026.</span></div>
+      <div class="cheat-item"><b>The true-cost stack</b><span>Bill + evals and monitoring ($40/probabilistic workload/mo) + verification labor ($220/mo when checkable answers flow through an LLM) + cleanup ($330 per silent miss).</span></div>
+      <div class="cheat-item"><b>The two-number honesty</b><span>Baseline: $5 bill, $2,315 true. Routed: $176 bill, $416 true. Quote both numbers, every time.</span></div>
+      <div class="cheat-item"><b>Error-cost asymmetry</b><span>A wrong theme wastes minutes; a wrong revenue number reaches a decision. Price the blast radius, and size the human gate to it.</span></div>
+      <div class="cheat-item"><b>No evals, no route</b><span>A probabilistic route with no eval budget is not approved - it just has not failed loudly yet.</span></div>
+      <div class="cheat-item"><b>The energy correction</b><span>2.9 Wh is superseded: measured medians ~0.24-0.3 Wh, down 33x in 12 months. Median is not mean; date every number you quote.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Next session</span>
+    <p>You have the routing and you have the math. Session 6 puts both on the table and runs everything live: the full decision tree, the ten-workload backlog through the simulator lever by lever, and your hand-priced napkin against the machine's canon. Bring the napkin. The final session is the playbook proving itself in front of you.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Session 5 of 6 · learn-when-ai-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="04-when-genai-wins.html">← Prev: When GenAI wins</a> &nbsp;·&nbsp; <a href="06-the-routing-playbook.html">Next: The routing playbook →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

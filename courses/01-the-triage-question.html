@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Session 1 of 6. Why 'should we use AI' is the wrong first question, the two-question test that routes any workload, and what the 95% failure statistic actually measures.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="The triage question - learn when ai with phoebe">
+<meta property="og:description" content="Session 1 of 6. The two-question test that routes any workload, and what the failure statistics actually measure.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-when-ai-with-phoebe/courses/01-the-triage-question.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-when-ai-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The triage question - learn when ai with phoebe">
+<meta name="twitter:description" content="Session 1 of 6. The two-question test that routes any workload.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-when-ai-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Session 1 · The triage question - learn when ai with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-when-ai-with-phoebe</a> / Session 1 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn When AI with Phoebe · Session 1 of 6</div>
+    <h1>The triage <span class="accent">question</span></h1>
+    <p class="sub">"Should we use AI for this" is the wrong first question, because it starts with the tool instead of the work. Tonight you learn the two-question test that routes any workload to the right tier, meet the failure statistics everyone quotes and almost everyone misreads, and triage a real ten-item backlog on paper. Do not use a nuclear weapon to kill a mosquito - the mosquito dies either way, and now you also have a crater to explain.</p>
+    <div class="chip-row">
+      <span class="chip level">🟢 Start here</span>
+      <span class="chip audience">Leaders deciding where AI budget goes</span>
+      <span class="chip audience">Practitioners routing their own work</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:5">3-22 · The test, and what actually fails</span>
+      <span class="a3" style="flex:4">22-40 · Build-along: triage a real backlog</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>How this course works</h2>
+    </div>
+    <p class="lede">Six sessions, 45 minutes each, and <strong>one routing playbook you build and can defend</strong>. Every session follows Cadence, an AI note-taker startup with a ten-workload ops backlog, and every session adds one routing rule. By session 6 the playbook routes the whole backlog live, with real cost math on every line.</p>
+
+    <div class="legend">
+      <span class="pill">🎫 Clear all three quiz questions to stamp your passport</span>
+      <span class="pill">Live = presented in the 45 minutes</span>
+      <span class="pill">Self-study = the full depth, after class</span>
+    </div>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> A two-question test that routes most workloads in under a minute. The honest reading of the two failure statistics every AI meeting quotes. And your own backlog sorted into three piles, which is the raw material for everything that follows.</p>
+    </div>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>Why the first question is never about the tool<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Google's own engineering guide for machine learning opens with a rule that most people have never read past the title of. Rule number one, verbatim: <strong>"Don't be afraid to launch a product without machine learning."</strong> The same guide adds that if you think ML will give you a 100 percent boost, a heuristic gets you 50 percent of the way there.</p>
+        <p>That is Google, the company with the most ML capacity on earth, telling its own engineers to reach for the simple thing first. The reason is not modesty. It is that the simple thing is verifiable, cheap, and already understood by everyone who has to trust its output.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>Cassie Kozyrkov, who spent years as Google's chief decision scientist, puts the boundary plainly: machine learning is not for problems that are "defined by human-made rules in the first place". If a human wrote the rule, a human can write the code. ML is for when you cannot articulate the rules yourself and have the data to learn them.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The vocabulary this course uses for the rest of the arc<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Deterministic work</strong> - the logic can be written down, verified once, and re-run forever. Metrics, thresholds, reconciliations, filters. The answer is checkable against the data.</li>
+          <li><strong>Pattern work</strong> - the rule cannot be written down, but history contains it. Churn, forecasts, anomalies. A trained model learns the rule you could not articulate.</li>
+          <li><strong>Judgment work</strong> - unstructured language, synthesis, generation. Theming tickets, drafting, extracting meaning from messy text. No table contains the answer.</li>
+        </ul>
+        <p>Three kinds of work, three tiers of tooling. Most routing mistakes are one kind of work sent to another kind's tool, in either direction - metrics sent to a language model, or language stuck in keyword counters.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 1 ============ -->
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers the two-question test</span>
+      <h2>Two questions route almost everything</h2>
+      <span class="tag concept">7 min live</span>
+    </div>
+    <p class="lede">Before any conversation about models, ask two questions about the workload itself. The answers route it, and they route it faster and more defensibly than any vendor evaluation.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flow diagram: a workload is routed by two questions - can the logic be verified, and is the definition aligned - into dashboard, classic ML, or GenAI tiers">
+        <style>
+          .w1qB { font: 700 12px Inter, sans-serif; fill: #fff; }
+          .w1qK { font: 700 12px Inter, sans-serif; fill: #1C1917; }
+          .w1qT { font: 700 13px Inter, sans-serif; fill: #78350F; }
+          .w1qN { font: 400 12px Inter, sans-serif; fill: #6B7280; }
+          .w1qE { font: 600 11px Inter, sans-serif; fill: #B45309; }
+        </style>
+        <defs>
+          <marker id="w1Ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#D6D3D1"/></marker>
+        </defs>
+        <rect x="330" y="24" width="220" height="38" rx="10" fill="#78350F"/>
+        <text class="w1qB" x="440" y="48" text-anchor="middle">A workload arrives</text>
+        <line x1="440" y1="62" x2="440" y2="92" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w1Ar)"/>
+        <rect x="280" y="96" width="320" height="40" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="1.5"/>
+        <text class="w1qK" x="440" y="121" text-anchor="middle">Q1 · Can the logic be written down?</text>
+        <line x1="440" y1="136" x2="440" y2="166" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w1Ar)"/>
+        <text class="w1qE" x="452" y="156">yes</text>
+        <rect x="280" y="170" width="320" height="40" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="1.5"/>
+        <text class="w1qK" x="440" y="195" text-anchor="middle">Q2 · Is the definition aligned?</text>
+        <line x1="440" y1="210" x2="200" y2="260" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w1Ar)"/>
+        <text class="w1qE" x="300" y="228">yes</text>
+        <line x1="440" y1="210" x2="440" y2="260" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w1Ar)"/>
+        <text class="w1qE" x="452" y="240">no: align first</text>
+        <line x1="600" y1="116" x2="700" y2="260" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w1Ar)"/>
+        <text class="w1qE" x="640" y="150">no</text>
+        <rect x="80" y="264" width="240" height="72" rx="12" fill="#166534"/>
+        <text class="w1qB" x="200" y="292" text-anchor="middle">DASHBOARD / SQL / RULES</text>
+        <text class="w1qB" x="200" y="314" text-anchor="middle" style="font-weight:400">verify once, then almost free</text>
+        <rect x="352" y="264" width="176" height="72" rx="12" fill="#D6D3D1"/>
+        <text class="w1qK" x="440" y="292" text-anchor="middle">STOP</text>
+        <text class="w1qN" x="440" y="314" text-anchor="middle">no tool fixes a fight</text>
+        <rect x="560" y="264" width="280" height="72" rx="12" fill="#B45309"/>
+        <text class="w1qB" x="700" y="288" text-anchor="middle">PROBABILISTIC TIER</text>
+        <text class="w1qB" x="700" y="308" text-anchor="middle" style="font-weight:400">pattern work goes to classic ML</text>
+        <text class="w1qB" x="700" y="326" text-anchor="middle" style="font-weight:400">judgment work goes to GenAI</text>
+        <text class="w1qN" x="60" y="374">If both answers are yes, the work is deterministic: build it once, verify it once, run it for cents.</text>
+        <text class="w1qN" x="60" y="392">Only a genuine no on Q1 earns the right to spend on a model. Sessions 3 and 4 split that branch.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the two-question test that routes any workload before any vendor call</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Q1: can the logic be written down and verified?<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Daily active users. Revenue by plan. Cards that failed three times. Every one of these has a definition a human wrote, which means a human can write the query, someone can check it against the data once, and from then on the answer is <strong>correct by construction</strong>. There is nothing for a model to be intelligent about.</p>
+        <p>The test in practice: <strong>if you can imagine writing the acceptance test, the logic is writable.</strong> "The DAU number must equal the count of distinct users with an event yesterday" is an acceptance test. "The summary must capture what customers meant" is not.</p>
+        <div class="callout tip">
+          <p><strong>The trap runs in both directions.</strong> Sending a metric to a language model wastes money and adds risk. But teams also spend months hand-writing rules for judgment work - keyword lists for ticket theming, regex for meeting notes - where no writable rule exists. The test is honest in both directions: a genuine no on Q1 is a real license to spend.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Q2: is the definition aligned, or are you automating an argument?<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The second question catches the failure the first one cannot. If finance counts revenue one way and product counts it another, no tool on any tier fixes that. A dashboard shows the disagreement faster. An LLM papers over it with fluent prose, which is worse, because now the disagreement ships inside a confident paragraph.</p>
+        <p>Alignment is a meeting, not a model. It is also the cheapest step in the whole pipeline: one hour of arguing about the definition of "active" saves every downstream tool from computing the wrong thing correctly.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>Monica Rogati drew this as a pyramid in 2017 and it has not aged a day: collect, move and store, explore and transform, aggregate and label, learn and optimize, and only then AI at the tip. Her framing: AI is the self-actualization of the data hierarchy, and you need food, water and shelter first. Most organizations reaching for the tip are skipping meals.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why the deterministic tier earns the word "trust"<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>A verified query is not "probably right". It is right in the way a proof is right: the logic was checked against the data once, and the same logic runs every time. That property - <strong>verifiability</strong> - is what lets a CFO sign the number without re-deriving it.</p>
+        <p>Probabilistic tools can be excellent, calibrated, and worth every cent. What they cannot be is correct by construction. That is not a criticism, it is a category difference, and the whole discipline of this course is refusing to blur it.</p>
+        <table class="clean">
+          <tr><th>Property</th><th>Deterministic tier</th><th>Probabilistic tier</th></tr>
+          <tr><td>Verified how</td><td>Once, against the data</td><td>Continuously, against an eval set</td></tr>
+          <tr><td>Marginal cost</td><td>Cents per run</td><td>Tokens, compute, monitoring</td></tr>
+          <tr><td>When it is wrong</td><td>Loudly, reproducibly</td><td>Fluently, sometimes silently</td></tr>
+          <tr><td>Who can check it</td><td>Anyone who can read the logic</td><td>Whoever maintains the evals</td></tr>
+        </table>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2 ============ -->
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers what actually fails</span>
+      <h2>The failure statistics, read honestly</h2>
+      <span class="tag concept">6 min live</span>
+    </div>
+    <p class="lede">Two numbers get quoted in every AI budget meeting: 95 percent of GenAI pilots fail, and 80 percent of AI projects fail. Both are real citations. Both are routinely misread, and the misreading matters because the true cause is the thing this course teaches.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RAND root causes of AI project failure, with leadership misunderstanding of the problem as the dominant cause, cited by 84 percent of industry interviewees">
+        <style>
+          .w1rL { font: 600 12px Inter, sans-serif; fill: #1C1917; }
+          .w1rV { font: 800 12px Inter, sans-serif; fill: #fff; }
+          .w1rW { font: 800 12px Inter, sans-serif; fill: #1C1917; }
+          .w1rN { font: 400 12px Inter, sans-serif; fill: #6B7280; }
+          .w1rH { font: 700 11px Inter, sans-serif; fill: #6B7280; letter-spacing: .05em; }
+        </style>
+        <text class="w1rH" x="60" y="46">RAND, 65 PRACTITIONER INTERVIEWS · THE FIVE ROOT CAUSES</text>
+        <text class="w1rL" x="320" y="88" text-anchor="end">1 · Leaders misunderstand the problem</text>
+        <rect x="332" y="70" width="470" height="26" rx="5" fill="#78350F"/>
+        <text class="w1rV" x="344" y="88">cited by ~84% of industry interviewees</text>
+        <text class="w1rL" x="320" y="132" text-anchor="end">2 · The data to train on does not exist</text>
+        <rect x="332" y="114" width="300" height="26" rx="5" fill="#B45309"/>
+        <text class="w1rL" x="320" y="176" text-anchor="end">3 · Technology chasing, not problem solving</text>
+        <rect x="332" y="158" width="260" height="26" rx="5" fill="#B45309"/>
+        <text class="w1rL" x="320" y="220" text-anchor="end">4 · No infrastructure to deploy into</text>
+        <rect x="332" y="202" width="200" height="26" rx="5" fill="#D97706"/>
+        <text class="w1rL" x="320" y="264" text-anchor="end">5 · The problem is beyond the state of the art</text>
+        <rect x="332" y="246" width="130" height="26" rx="5" fill="#FDE68A"/>
+        <text class="w1rN" x="60" y="308">The number one cause of AI project failure is not the model. It is the routing decision this course teaches.</text>
+        <text class="w1rN" x="60" y="330">Bars ordered as RAND presents the causes; only cause 1 carries a reported interview percentage.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the dominant root cause is a wrong problem, not a weak model</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>What "95 percent fail" actually measures<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The MIT Project NANDA report from July 2025 found that despite 30 to 40 billion dollars of enterprise investment, <strong>95 percent of GenAI pilots showed no measurable profit-and-loss impact</strong>. That figure moved markets, and it is usually quoted as proof the technology does not work.</p>
+        <p>Its own lead author says the opposite. The divide is a <strong>learning gap in organizations</strong>: the roughly 5 percent that succeed pick one pain point, execute well, and partner smartly. The same report documents a thriving shadow economy of employees quietly succeeding with personal AI tools while the official pilot stalls. The honest reading: <strong>pilots fail to cross into the P&amp;L, and the cause is selection and execution, not model capability</strong>. Worth knowing: the report is pre-publication and not peer-reviewed, which is exactly the kind of caveat a leader should attach when quoting it.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>What "80 percent fail" actually claims, and the skeptic worth reading<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The RAND report is careful in a way its quoters are not: it says "<strong>by some estimates</strong>, more than 80 percent of AI projects fail - twice the rate of failure for information technology projects that do not involve AI". RAND cites the estimate; it did not measure it. What RAND did measure, across 65 experienced practitioners, is the ranked causes in the figure above.</p>
+        <p>The strongest published skeptic case is Goldman Sachs' 2024 report "Gen AI: Too Much Spend, Too Little Benefit?", where Jim Covello argues that roughly a trillion dollars of capex has "little to show for it so far" and that AI "isn't designed to solve the complex problems that would justify the costs". Read it knowing it is a debate: the same document carries Goldman analysts arguing the optimistic side. The takeaway for a router is neither camp's headline - it is that <strong>the spend is real, the returns are concentrated, and routing decides which side of the concentration you land on</strong>.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3 ============ -->
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers matching tool to target</span>
+      <h2>The escalation ladder: climb only when pushed</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">Tools form a ladder from a SQL query to an autonomous agent, and every rung up costs more, verifies harder, and fails more quietly. The discipline is to start at the bottom and climb only when the problem genuinely refuses the rung you are on.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Escalation ladder from SQL and rules at the bottom, through classic ML, to LLM calls and agents at the top, with cost and verifiability annotations per rung">
+        <style>
+          .w1eT { font: 700 12px Inter, sans-serif; fill: #fff; }
+          .w1eK { font: 700 12px Inter, sans-serif; fill: #1C1917; }
+          .w1eS { font: 400 11px Inter, sans-serif; fill: #6B7280; }
+          .w1eW { font: 400 11px Inter, sans-serif; fill: #FDE68A; }
+          .w1eN { font: 400 12px Inter, sans-serif; fill: #6B7280; }
+        </style>
+        <rect x="120" y="260" width="640" height="52" rx="10" fill="#166534"/>
+        <text class="w1eT" x="150" y="282">Rung 1 · Dashboard, SQL, rules</text>
+        <text class="w1eW" x="150" y="300">verified once, cents per run, wrong loudly</text>
+        <rect x="170" y="192" width="540" height="52" rx="10" fill="#B45309"/>
+        <text class="w1eT" x="200" y="214">Rung 2 · Classic ML: trained, backtested</text>
+        <text class="w1eW" x="200" y="232">cheap inference, needs an eval set and monitoring</text>
+        <rect x="220" y="124" width="440" height="52" rx="10" fill="#78350F"/>
+        <text class="w1eT" x="250" y="146">Rung 3 · LLM call: judgment on demand</text>
+        <text class="w1eW" x="250" y="164">tokens per run, fluent when wrong</text>
+        <rect x="270" y="56" width="340" height="52" rx="10" fill="#334155"/>
+        <text class="w1eT" x="300" y="78">Rung 4 · Agent: judgment plus actions</text>
+        <text class="w1eW" x="300" y="96">highest power, hardest to verify</text>
+        <text class="w1eK" x="60" y="60">cost and</text>
+        <text class="w1eK" x="60" y="78">silence of</text>
+        <text class="w1eK" x="60" y="96">failure rise</text>
+        <text class="w1eS" x="60" y="116">as you climb</text>
+        <text class="w1eN" x="60" y="344">Each rung up trades verifiability for capability. The router's job is to prove a workload off rung 1</text>
+        <text class="w1eN" x="60" y="364">before paying rung 2 prices, and off rung 2 before paying rung 3. Never start at the top.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - every rung up costs more and fails more quietly</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The mosquito principle, twenty-five centuries old<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The instinct this course trains has a long pedigree. The Analects records Confucius, arriving in a small town governed with elaborate ceremonial music, asking with a smile: 割鸡焉用牛刀 - <strong>why use an ox-cleaver to kill a chicken?</strong> The modern version is the one on this course's masthead: do not use a nuclear weapon to kill a mosquito.</p>
+        <p>Notice what the proverb is not saying. It is not anti-cleaver. When there is an ox, bring the cleaver, and bring the best one you can afford. Session 4 is entirely about recognizing the ox. The failure mode is unmatched scale in either direction: the cleaver on the chicken wastes the cleaver, and the paring knife on the ox ruins the knife and leaves the ox annoyed.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>Cadence's founder asked the data lead for "yesterday's active users" in standup. The lead piped the events table through an LLM summarizer built for meeting notes, because it was already wired up. The number came back plausible, wrong by six percent, and nobody knew until finance reconciled month-end. The query that answers the question correctly costs less than a cent and was already running behind an unused dashboard tile.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>Why capable tools get overused: three honest reasons<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>The capable tool is already open.</strong> Once a team has an LLM integration, marginal workloads flow to it by convenience, not by fit. Convenience is a real benefit; it is just rarely priced against the verification cost it drags in.</li>
+          <li><strong>Demos reward the top rung.</strong> An agent doing a metric lookup looks impressive in a demo and indefensible in an audit. The demo audience never sees the eval set that now has to exist forever.</li>
+          <li><strong>Nobody gets promoted for a WHERE clause.</strong> Incentives tilt toward visible sophistication. A routing playbook makes the boring-but-right choice legible as a decision, which is the only way it survives review season.</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Build-along</span>
+      <h2>Triage a real backlog, on paper</h2>
+      <span class="tag demo">★ 18 min · everyone builds</span>
+    </div>
+    <p class="lede">Cadence's ten ops workloads, exactly as they arrive in session 6's live simulator. Tonight you route them with the two-question test and nothing else. Keep your answers - session 6 scores them against the live cost math.</p>
+
+    <div class="steps">
+      <div class="step"><p><strong>Write the three columns:</strong> deterministic, pattern, judgment. This is the triage vocabulary from Part 0, and it maps one-to-one onto dashboard, classic ML, and GenAI tiers.</p></div>
+      <div class="step"><p><strong>Route the easy six first.</strong> Yesterday's DAU, monthly revenue by plan, cards that failed three times: can you write the acceptance test? Then they are deterministic. Theming 500 support tickets, drafting onboarding emails, extracting action items from transcripts: no writable rule exists. Judgment.</p></div>
+      <div class="step"><p><strong>Now the four that start arguments.</strong> Churn prediction, ticket volume forecast, weird API usage: no writable rule, but history contains the pattern - that is the middle pile, and session 3 shows why it is the cheapest trustworthy home. "Why did NPS drop" is the trap: it FEELS like judgment, but the first move is decomposing the metric tree, which is deterministic. Narrative comes after the numbers.</p></div>
+      <div class="step"><p><strong>Apply Q2 to your own workloads.</strong> Pick three tasks from your actual week. For each: can the logic be written down, and is the definition aligned across the teams that consume it? Any workload with a contested definition goes to the STOP box, and the fix is a meeting.</p></div>
+      <div class="step"><p><strong>Count your piles.</strong> Cadence's backlog lands 4 deterministic, 3 pattern, 3 judgment. If your own week landed 0 deterministic, re-check: the most common triage error tonight is calling a writable rule "judgment" because writing it sounds boring.</p></div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>What to bring to session 2.</strong> Your three-pile list. Session 2 takes the deterministic pile and shows the economics that make it almost free: the 10 GB question that costs six cents as a query and five figures as tokens, and why "verified once" is the property every other tier has to pay rent to imitate.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Before session 2</h2>
+      <span class="tag exercise">30 min</span>
+    </div>
+    <ol>
+      <li><strong>Finish the triage of your own backlog</strong> - at least ten workloads from your team's actual week, each labeled deterministic, pattern, or judgment, each with a one-line reason.</li>
+      <li><strong>Find one workload currently running a rung too high.</strong> Something a model answers that a query could. Write down what it costs today, even roughly.</li>
+      <li><strong>Find one running a rung too low.</strong> Somewhere a keyword list or regex is impersonating judgment. Note what it misses.</li>
+      <li><strong>Read Google's Rules of ML, rule 1 and its explanation.</strong> Ten minutes, and you will quote it in meetings for years.</li>
+      <li><strong>Optional:</strong> ask two teams for their definition of one shared metric. If the definitions differ, you have found tonight's STOP box in the wild, and no tool was ever going to fix it.</li>
+    </ol>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and session 1 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · The MIT report found 95 percent of GenAI pilots showed no measurable P&amp;L impact. What does its own lead author say this measures?</p>
+      <button class="qopt" type="button">A · That the models are not capable enough yet for enterprise work</button>
+      <button class="qopt" type="button">B · That enterprises invested too little money for pilots to succeed</button>
+      <button class="qopt" type="button">C · A learning gap in organizations: the winners pick one pain point, execute well, and partner smartly</button>
+      <p class="qwhy">The report's lead author has pushed back on the "AI does not work" reading. The same report documents employees succeeding with personal AI tools while official pilots stall. The failure is selection and execution - the routing skill - not model capability. And the report is pre-publication, a caveat worth attaching when you quote it.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">2 · "Flag every card that failed payment three times this week." Route it.</p>
+      <button class="qopt" type="button">A · An LLM, because it involves interpreting customer payment behavior</button>
+      <button class="qopt" type="button">B · The deterministic tier: the logic is writable, verifiable once, and then runs for cents</button>
+      <button class="qopt" type="button">C · Classic ML, because payment failure is a prediction problem</button>
+      <p class="qwhy">"Failed three or more times" is a writable rule - a WHERE clause, not intelligence. You can write the acceptance test, so Q1 answers yes. Predicting who WILL fail next month would be pattern work; flagging who already did is arithmetic.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">3 · What did RAND's 65-practitioner study identify as the number one root cause of AI project failure?</p>
+      <button class="qopt" type="button">A · Leadership misunderstanding or miscommunicating the problem the AI is meant to solve</button>
+      <button class="qopt" type="button">B · Models that were not accurate enough for the task</button>
+      <button class="qopt" type="button">C · Insufficient GPU capacity for training</button>
+      <p class="qwhy">Cited by roughly 84 percent of industry interviewees - the dominant cause by a wide margin, ahead of missing data, technology chasing, missing infrastructure, and genuinely impossible problems. Note RAND's own care with the headline number: it cites estimates that 80 percent of projects fail; it did not measure that figure itself.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ OFFICIAL COVERAGE ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Google Rules of ML, rule 1</span><span class="note">Quoted verbatim from the Google Developers guide, with the heuristic-first corollary</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Kozyrkov on when not to use ML</span><span class="note">The human-made-rules boundary, paraphrased faithfully from her Towards Data Science essay</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">MIT Project NANDA, The GenAI Divide 2025</span><span class="note">The 95 percent figure with its own author's correction attached, plus the not-peer-reviewed caveat</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">RAND root causes of AI project failure, 2024</span><span class="note">Five causes from 65 practitioner interviews, with the cites-not-measured caution on the 80 percent line</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Goldman Sachs, Too Much Spend Too Little Benefit</span><span class="note">Covello's skeptic case introduced; session 5 works its cost arguments in full</span></div>
+      <div class="covered-row"><span class="status pill light">◐</span><span class="name">Rogati, The AI Hierarchy of Needs</span><span class="note">The pyramid framing; session 2 walks the layers against Cadence's stack</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Full source map with every URL and every honesty caveat: <span class="mono">materials/official-course-map.md</span> in this repo.</p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 1 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The two-question test</b><span>Can the logic be written down and verified? Is the definition aligned? Two yeses route to the dashboard tier.</span></div>
+      <div class="cheat-item"><b>Rule 1, verbatim</b><span>"Don't be afraid to launch a product without machine learning." Google, to its own engineers.</span></div>
+      <div class="cheat-item"><b>The acceptance-test shortcut</b><span>If you can write the acceptance test, the logic is writable, and the work is deterministic.</span></div>
+      <div class="cheat-item"><b>95 percent, read honestly</b><span>Pilots fail to reach the P&amp;L through selection and execution - a learning gap, says the report's own author, not model failure.</span></div>
+      <div class="cheat-item"><b>Root cause number one</b><span>Leaders misunderstanding the problem, per 84 percent of RAND's industry interviewees. Not the model.</span></div>
+      <div class="cheat-item"><b>The mosquito principle</b><span>割鸡焉用牛刀 - match the tool to the target, and climb the ladder only when the problem pushes you up.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Next session</span>
+    <p>Tonight sorted the backlog into three piles. Session 2 takes the biggest pile - the deterministic one - and shows why it is almost free: the six-cent query that would cost five figures in tokens, the verified-once economics no model can match, and the honest limits of the free tier, because a dashboard cannot theme a support ticket either.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Session 1 of 6 · learn-when-ai-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="../index.html">← All sessions</a> &nbsp;·&nbsp; <a href="02-the-almost-free-tier.html">Next: The almost-free tier →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- social:start -->
+<meta name="description" content="Session 3 of 6. The middle rung: pattern work with no writable rule, why backtestability is a form of verification, the three-paper tabular evidence stack, and the $62 inference box.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Learn with Phoebe">
+<meta property="og:title" content="When classic ML wins - learn when ai with phoebe">
+<meta property="og:description" content="Session 3 of 6. Backtestable models, the tabular evidence stack read with its caveats, and the cheapest trustworthy configuration in the simulator.">
+<meta property="og:url" content="https://phoebefu6.github.io/learn-when-ai-with-phoebe/courses/03-when-classic-ml-wins.html">
+<meta property="og:image" content="https://phoebefu6.github.io/learn-when-ai-with-phoebe/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="When classic ML wins - learn when ai with phoebe">
+<meta name="twitter:description" content="Session 3 of 6. The middle rung: backtestable, cheap, and earned.">
+<meta name="twitter:image" content="https://phoebefu6.github.io/learn-when-ai-with-phoebe/assets/og-cover.png">
+<!-- social:end -->
+<title>Session 3 · When classic ML wins - learn when ai with phoebe</title>
+<link rel="stylesheet" href="../assets/style.css?v=1">
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="wrap">
+    <span class="crumb"><a href="../index.html">learn-when-ai-with-phoebe</a> / Session 3 of 6</span>
+    <button class="btn" id="toggle-all" type="button">Expand all</button>
+    <button class="btn primary" id="zoom-toggle" type="button">Projector zoom: off</button>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Learn When AI with Phoebe · Session 3 of 6</div>
+    <h1>When classic ML <span class="accent">wins</span></h1>
+    <p class="sub">Three of Cadence's workloads have no writable rule - and they are still not LLM work. Tonight is the middle rung: models trained on your own history, measured on the past before they are trusted on the future, and served for cents. It is the least glamorous tier and, in the simulator, the cheapest trustworthy configuration in the whole course. Glamour is not a routing criterion.</p>
+    <div class="chip-row">
+      <span class="chip level">🟡 Medium</span>
+      <span class="chip audience">Leaders deciding where AI budget goes</span>
+      <span class="chip audience">Practitioners routing their own work</span>
+      <span class="chip time">45 min</span>
+    </div>
+    <div class="agenda">
+      <span class="a1" style="flex:1">0-3 · Welcome</span>
+      <span class="a2" style="flex:5">3-22 · The middle rung's evidence</span>
+      <span class="a3" style="flex:4">22-40 · Build-along: design a backtest</span>
+      <span class="a4" style="flex:1">40-45 · Q&amp;A</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ INTRO ============ -->
+  <section class="section" id="intro">
+    <div class="section-kicker">
+      <span class="klabel">Part 0</span>
+      <h2>Where session 2 left you</h2>
+    </div>
+    <p class="lede">The free tier took four of Cadence's ten workloads for pocket change - priced by hand, acceptance tests written. That leaves <strong>three pattern workloads homeless</strong>: churn prediction, the ticket-volume forecast, and anomalous API usage. No writable rule exists for any of them, and none of them is language work either. Tonight they get a home.</p>
+
+    <div class="callout win">
+      <p><strong>★ What you walk out with tonight.</strong> The test that recognizes pattern work on sight. Three peer-reviewed papers of evidence for the middle rung, read with their caveats intact. And a backtest design for Cadence's churn model, on paper, that you could hand to any data scientist tomorrow morning.</p>
+    </div>
+
+    <details class="card" open>
+      <summary><span class="mode live">Live</span>The pile with no rule and no words<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Run session 1's test on "which workspaces will cancel next month". Can the logic be written down? Try it: tenure under 90 days AND fewer than 3 notes a week AND... every rule you write leaks. Churn has a hundred quiet precursors and no human can enumerate them. Q1 is a genuine no - <strong>this is the license to spend that the deterministic pile never issues</strong>.</p>
+        <p>But look at what the work is made of: rows, columns, timestamps, counts. Structured history. No paragraph needs understanding, nothing needs generating. The rule you cannot write is sitting inside data you already have, waiting to be learned. That combination - <strong>no writable rule, but history contains it</strong> - is the signature of the middle rung, and it fits all three homeless workloads exactly.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The three workloads, one line each<span class="mini">2 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <ul>
+          <li><strong>Churn prediction</strong> - which paying workspaces cancel soon. The precursors live in usage history nobody can fully articulate.</li>
+          <li><strong>Ticket-volume forecast</strong> - how many support tickets arrive next week, so staffing is a decision instead of a scramble. Seasonality plus release spikes, learnable from two years of counts.</li>
+          <li><strong>Anomalous API usage</strong> - which integration partners' traffic looks wrong. "Wrong" resists definition; "unlike its own history" does not.</li>
+        </ul>
+        <p>Notice what they share: the answer is a number or a flag about the future, graded eventually by reality itself. That grading is what tonight's whole argument stands on.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 1 ============ -->
+  <section class="section" id="part-1">
+    <div class="section-kicker">
+      <span class="klabel">Part 1 · covers pattern work and the middle rung</span>
+      <h2>Backtestable: the middle rung's superpower</h2>
+      <span class="tag concept">7 min live</span>
+    </div>
+    <p class="lede">The deterministic tier is verified once. The middle rung cannot have that - but it has the next best thing, and the next best thing is still a form of verification: you can measure the model on the past before you trust it on the future.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three pattern workloads - churn, ticket forecast, anomalous API usage - flow into one 62 dollar per month inference box, with a backtest loop drawn against twelve months of history">
+        <style>
+          .w3aW { font: 700 12px Inter, sans-serif; fill: #fff; }
+          .w3aY { font: 400 11px Inter, sans-serif; fill: #FDE68A; }
+          .w3aB { font: 800 24px Inter, sans-serif; fill: #fff; }
+          .w3aK { font: 700 12px Inter, sans-serif; fill: #1C1917; }
+          .w3aS { font: 400 11px Inter, sans-serif; fill: #6B7280; }
+          .w3aE { font: 600 11px Inter, sans-serif; fill: #B45309; }
+          .w3aN { font: 400 12px Inter, sans-serif; fill: #6B7280; }
+        </style>
+        <defs>
+          <marker id="w3aAr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#D6D3D1"/></marker>
+        </defs>
+        <rect x="60" y="50" width="250" height="54" rx="10" fill="#B45309"/>
+        <text class="w3aW" x="80" y="72">Churn prediction</text>
+        <text class="w3aY" x="80" y="90">which workspaces cancel soon</text>
+        <rect x="60" y="128" width="250" height="54" rx="10" fill="#B45309"/>
+        <text class="w3aW" x="80" y="150">Ticket-volume forecast</text>
+        <text class="w3aY" x="80" y="168">next week's support load</text>
+        <rect x="60" y="206" width="250" height="54" rx="10" fill="#B45309"/>
+        <text class="w3aW" x="80" y="228">Anomalous API usage</text>
+        <text class="w3aY" x="80" y="246">traffic unlike its own history</text>
+        <line x1="310" y1="77" x2="388" y2="140" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w3aAr)"/>
+        <line x1="310" y1="155" x2="388" y2="158" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w3aAr)"/>
+        <line x1="310" y1="233" x2="388" y2="176" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w3aAr)"/>
+        <rect x="392" y="100" width="230" height="116" rx="12" fill="#166534"/>
+        <text class="w3aW" x="412" y="128">One inference box</text>
+        <text class="w3aB" x="412" y="164">$62 / month</text>
+        <text class="w3aY" x="412" y="188">serves all three pattern</text>
+        <text class="w3aY" x="412" y="204">workloads, cents per call</text>
+        <line x1="622" y1="158" x2="686" y2="158" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w3aAr)"/>
+        <rect x="690" y="118" width="150" height="80" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="1.5"/>
+        <text class="w3aK" x="765" y="146" text-anchor="middle">7/10 trusted</text>
+        <text class="w3aS" x="765" y="166" text-anchor="middle">cheapest trustworthy</text>
+        <text class="w3aS" x="765" y="182" text-anchor="middle">config in the course</text>
+        <rect x="392" y="286" width="230" height="54" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="1.5"/>
+        <text class="w3aK" x="507" y="308" text-anchor="middle">12 months of history</text>
+        <text class="w3aS" x="507" y="326" text-anchor="middle">the exam the model sits first</text>
+        <path d="M 440 286 C 420 250, 420 250, 440 218" fill="none" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w3aAr)"/>
+        <path d="M 575 218 C 595 250, 595 250, 575 284" fill="none" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w3aAr)"/>
+        <text class="w3aE" x="340" y="258">train on early months</text>
+        <text class="w3aE" x="602" y="258">score on held-out months</text>
+        <text class="w3aN" x="60" y="386">The loop at the bottom is the point: before the box earns a cent of trust on the future, it is graded</text>
+        <text class="w3aN" x="60" y="406">on months where the answers are already known. Fail the exam and it never ships. That is verification.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - three pattern workloads, one $62 inference box, and the backtest loop that earns the trust</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Why backtestability is verification, not vibes<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Train the churn model only on data up to six months ago, then ask it to predict the churn that followed - churn that has <strong>already happened</strong>, so every prediction is gradeable against reality. Before the model touches a single live decision, you hold a number: how well it did on a future it could not have memorized.</p>
+        <p>That is a real exam with a real answer key, and it is the middle rung's answer to "verified once". Not correct by construction - correct by demonstration, on your own data, before deployment. The LLM route cannot cheaply imitate this: to earn the same certificate it needs a labeled eval set built and graded by hand, per task, forever. The trained model's exam comes free with the method, because history already contains the answers.</p>
+        <div class="callout tip">
+          <p><strong>The routing consequence:</strong> when a workload is backtestable, you can know what you are buying before you buy it. Demand the backtest number before trusting any pattern-work tool - a vendor who cannot produce one is selling you the demo, not the model.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The $62 box, itemized<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>In the simulator, switching the three pattern workloads onto classic ML lands the whole configuration at <strong>$62 a month true cost, with 7 of 10 answers trusted and zero silently wrong</strong> - the cheapest trustworthy configuration in the course. One modest inference box serves all three models; inference on tabular models costs cents per thousand calls, so the workloads share the hardware the way queries share a warehouse.</p>
+        <p>Compare the neighbors: the free-tier-only config sits at $224 with 4/10 trusted, because the pattern pile is still being mangled elsewhere. The AI-everything anti-lever pays $2,429 from baseline to trust 3 of 10. The middle rung is where the cost curve and the trust curve cross - which is exactly why it is the most skipped rung in 2026: it is nobody's demo and everybody's savings.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 2 ============ -->
+  <section class="section" id="part-2">
+    <div class="section-kicker">
+      <span class="klabel">Part 2 · covers the tabular evidence stack</span>
+      <h2>Three papers, read with their caveats on</h2>
+      <span class="tag concept">7 min live</span>
+    </div>
+    <p class="lede">"Just use the LLM for everything" has a marketing budget. The middle rung has peer review. No single canonical LLM-vs-XGBoost headline study exists, so the honest move is a stack of three, each carried with its scope.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three stacked evidence cards: Grinsztajn NeurIPS 2022 on trees for typical medium-sized tabular data, McElfresh NeurIPS 2023 on GBDT as strongest default, Bordt COLM 2024 on LLM memorization of tabular benchmarks">
+        <style>
+          .w3bW { font: 700 12px Inter, sans-serif; fill: #fff; }
+          .w3bY { font: 400 11px Inter, sans-serif; fill: #FDE68A; }
+          .w3bT { font: 700 11px Inter, sans-serif; fill: #6B7280; letter-spacing: .05em; }
+          .w3bN { font: 400 12px Inter, sans-serif; fill: #6B7280; }
+        </style>
+        <text class="w3bT" x="60" y="42">THE EVIDENCE STACK · NO SINGLE HEADLINE STUDY, THREE SCOPED ONES</text>
+        <rect x="100" y="62" width="680" height="88" rx="12" fill="#78350F"/>
+        <text class="w3bW" x="124" y="92">Grinsztajn, Oyallon, Varoquaux · NeurIPS 2022 · 45 datasets</text>
+        <text class="w3bY" x="124" y="114">Tree-based models remain state of the art on TYPICAL, MEDIUM-SIZED</text>
+        <text class="w3bY" x="124" y="132">(~10K sample) tabular data - the scope is in the title, carry it with you</text>
+        <rect x="120" y="166" width="680" height="88" rx="12" fill="#B45309"/>
+        <text class="w3bW" x="144" y="196">McElfresh et al. · NeurIPS 2023 · 176 datasets</text>
+        <text class="w3bY" x="144" y="218">GBDT vs NN wins vary by dataset profile; lightly-tuned GBDT is the</text>
+        <text class="w3bY" x="144" y="236">strongest default, and tuning matters more than algorithm choice</text>
+        <rect x="140" y="270" width="680" height="88" rx="12" fill="#334155"/>
+        <text class="w3bW" x="164" y="300">Bordt, Nori, Caruana et al. · COLM 2024</text>
+        <text class="w3bY" x="164" y="322">LLMs memorized popular tabular datasets verbatim - pre-cutoff</text>
+        <text class="w3bY" x="164" y="340">benchmark wins can be contamination, not capability</text>
+        <text class="w3bN" x="60" y="392">Together: a scoped default for the middle rung, a reminder that tuning beats tool-swapping, and a reason to distrust famous-CSV demos.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the three-paper evidence stack, each finding carried with its scope</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>What the stack does and does not license<span class="mini">4 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p><strong>Grinsztajn and colleagues</strong> found tree-based models still state of the art - on <strong>typical, medium-sized tabular data</strong>, around 10K samples, across 45 datasets. The scope is in the paper's own title, and it is the finding, not fine print. This is not "trees always win"; it is "on the shape of data most businesses actually have, the boring tool is still the benchmark to beat".</p>
+        <p><strong>McElfresh and colleagues</strong> widened the lens to 176 datasets and found the wins between GBDTs and neural networks vary by dataset profile - but a <strong>lightly-tuned GBDT is the strongest default</strong>, and <strong>tuning matters more than algorithm choice</strong>. The routing lesson hides in that last clause: the team arguing about which tool would be better spent tuning the one they have.</p>
+        <p>Together the stack licenses one modest claim: for Cadence's three pattern workloads - all typical, all medium-sized, all tabular - a gradient-boosted model is the evidence-backed default. It does not license sneering at neural nets on large or exotic data. Scoped claims are the ones that survive meetings.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>The demo that misleads<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Someone will show you a frontier LLM scoring brilliantly on a famous public dataset and conclude the middle rung is obsolete. <strong>Bordt and colleagues tested exactly this</strong> and found that LLMs had memorized popular tabular datasets verbatim - they could reproduce rows character for character. An impressive score on a dataset the model has seen during training is <strong>contamination, not capability</strong>: the exam was in the training set.</p>
+        <p>Your churn table was not. That is the quiet, decisive advantage of the backtest from Part 1: your own held-out history is an exam the model provably has not seen. The demo dazzles on Titanic; the routing decision is about your data, where the only honest certificate is the one you grade yourself.</p>
+        <div class="callout example">
+          <span class="ex-pill">Real world</span>
+          <p>Cadence's founder saw a conference demo of an LLM "doing churn analysis" on a public telecom dataset and asked why the team was still training models. The team's answer was the backtest: on Cadence's own held-out months, where nothing is memorized, the boring GBDT produced a gradeable number and the demo could not. The question changed from "why not the impressive tool" to "which tool passes our exam".</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ PART 3 ============ -->
+  <section class="section" id="part-3">
+    <div class="section-kicker">
+      <span class="klabel">Part 3 · covers what the middle rung costs</span>
+      <h2>The discipline bill: what $62 does not include</h2>
+      <span class="tag concept">5 min live</span>
+    </div>
+    <p class="lede">The middle rung is cheap to run and honest to price - but it is not free to own. A trained model is a standing commitment, and the commitment has line items.</p>
+
+    <figure class="zoomable">
+      <svg viewBox="0 0 880 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The middle-rung ownership loop: train, backtest, deploy, monitor, retrain, arranged in a cycle with the eval set at the center">
+        <style>
+          .w3cW { font: 700 12px Inter, sans-serif; fill: #fff; }
+          .w3cY { font: 400 11px Inter, sans-serif; fill: #FDE68A; }
+          .w3cS { font: 400 11px Inter, sans-serif; fill: #6B7280; }
+          .w3cN { font: 400 12px Inter, sans-serif; fill: #6B7280; }
+        </style>
+        <defs>
+          <marker id="w3cAr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#D6D3D1"/></marker>
+        </defs>
+        <circle cx="440" cy="210" r="74" fill="#78350F"/>
+        <text class="w3cW" x="440" y="200" text-anchor="middle">THE EVAL SET</text>
+        <text class="w3cY" x="440" y="220" text-anchor="middle">the asset you own,</text>
+        <text class="w3cY" x="440" y="236" text-anchor="middle">every stage reads it</text>
+        <rect x="180" y="46" width="160" height="54" rx="10" fill="#B45309"/>
+        <text class="w3cW" x="260" y="68" text-anchor="middle">1 · Train</text>
+        <text class="w3cY" x="260" y="88" text-anchor="middle">on frozen history</text>
+        <rect x="540" y="46" width="160" height="54" rx="10" fill="#B45309"/>
+        <text class="w3cW" x="620" y="68" text-anchor="middle">2 · Backtest</text>
+        <text class="w3cY" x="620" y="88" text-anchor="middle">pass or never ship</text>
+        <rect x="660" y="220" width="160" height="54" rx="10" fill="#B45309"/>
+        <text class="w3cW" x="740" y="242" text-anchor="middle">3 · Deploy</text>
+        <text class="w3cY" x="740" y="262" text-anchor="middle">cents per call</text>
+        <rect x="360" y="340" width="160" height="54" rx="10" fill="#334155"/>
+        <text class="w3cW" x="440" y="362" text-anchor="middle">4 · Monitor</text>
+        <text class="w3cY" x="440" y="382" text-anchor="middle">drift shows up here</text>
+        <rect x="60" y="220" width="160" height="54" rx="10" fill="#B45309"/>
+        <text class="w3cW" x="140" y="242" text-anchor="middle">5 · Retrain</text>
+        <text class="w3cY" x="140" y="262" text-anchor="middle">when the world moves</text>
+        <line x1="340" y1="73" x2="536" y2="73" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w3cAr)"/>
+        <line x1="660" y1="100" x2="726" y2="216" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w3cAr)"/>
+        <line x1="700" y1="278" x2="524" y2="352" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w3cAr)"/>
+        <line x1="356" y1="352" x2="180" y2="278" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w3cAr)"/>
+        <line x1="150" y1="216" x2="216" y2="100" stroke="#D6D3D1" stroke-width="2" marker-end="url(#w3cAr)"/>
+        <text class="w3cS" x="60" y="130">the loop never</text>
+        <text class="w3cS" x="60" y="146">finishes - that is</text>
+        <text class="w3cS" x="60" y="162">the price of rung 2</text>
+        <text class="w3cN" x="60" y="424">The simulator prices this loop at $40 per probabilistic workload per month for evals and monitoring -</text>
+        <text class="w3cN" x="60" y="444">the line session 5 adds. A model without this loop is not cheaper. It is unpriced, which always costs more.</text>
+      </svg>
+      <figcaption>🔍 Click to zoom - the ownership loop every trained model signs you up for, with the eval set at the center</figcaption>
+    </figure>
+
+    <details class="card">
+      <summary><span class="mode live">Live</span>Drift, upkeep, and the $40 line item<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>The world the model learned keeps moving: a pricing change reshapes churn, a product launch reshapes ticket volume, a new integration reshapes "normal" API traffic. That is <strong>drift</strong>, and it is not a malfunction - it is the weather on rung 2. The defense is the loop in the figure: a maintained eval set, monitoring that compares live performance against the backtest number, and retraining when the gap opens.</p>
+        <p>The simulator prices that discipline at <strong>$40 per probabilistic workload per month</strong> - the upkeep line its S5 lever adds, which is why the honest full-cost configuration reads $416 rather than $176. Budget the loop on day one. A model priced without its eval set is a quote for half a bridge.</p>
+      </div>
+    </details>
+
+    <details class="card">
+      <summary><span class="mode self">Self-study</span>The heuristic gate: earn the model before you build it<span class="mini">3 min</span><span class="caret">▶</span></summary>
+      <div class="body">
+        <p>Google's Rules of ML puts a gate in front of this whole session: "If you think that machine learning will give you a 100% boost, then a heuristic will get you 50% of the way there." Before Cadence trains anything, the honest first move is the dumb baseline: for churn, flag workspaces with no notes created in 14 days; for the forecast, next week equals the same week last year plus trend.</p>
+        <p>The heuristic is not the destination - it is the yardstick. It costs an afternoon, it is deterministic, and it sets the number the model must beat by enough to pay its $40-a-month loop. Sometimes the heuristic wins outright and a workload quietly moves DOWN a rung, which is not a failure of ambition. It is the routing skill working.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ DEMO ============ -->
+  <section class="section" id="demo-1">
+    <div class="section-kicker">
+      <span class="klabel">Build-along</span>
+      <h2>Design the churn backtest, on paper</h2>
+      <span class="tag demo">★ 18 min · everyone builds</span>
+    </div>
+    <p class="lede">No code tonight - the design decisions ARE the hard part, and they fit on one page. You are writing the exam Cadence's churn model must pass before it touches a live decision.</p>
+
+    <div class="steps">
+      <div class="step"><p><strong>Pick the label window.</strong> Write the definition of the event: "a paying workspace cancels within 60 days of the prediction date". No model can be graded until the thing it predicts has an unambiguous definition and a deadline - this is session 1's Q2 wearing a lab coat.</p></div>
+      <div class="step"><p><strong>Set the feature freeze date.</strong> Every feature is computed only from data that existed before the prediction date - usage counts, tenure, plan, ticket history as of that morning. One feature that peeks past the freeze (a cancellation email timestamp, say) and the backtest becomes a beautiful lie.</p></div>
+      <div class="step"><p><strong>Choose the holdout months.</strong> Train on the older months, hold out the most recent three untouched. The holdout must be later in time than the training data, never randomly shuffled - churn is a time problem, and shuffling lets tomorrow leak into yesterday.</p></div>
+      <div class="step"><p><strong>Write the trust number and the kill number before you run anything.</strong> For example: "trust if the top-scoring decile of workspaces contains at least 3x the baseline churn rate; kill if it is under 1.5x". Deciding after seeing results is how every model ever shipped got shipped.</p></div>
+      <div class="step"><p><strong>Write the heuristic it must beat.</strong> "No notes created in 14 days" is the free-tier baseline. The model earns its monthly loop only by beating the heuristic by more than the loop costs. If it cannot, the workload moves down a rung and that decision goes in the playbook too.</p></div>
+    </div>
+
+    <div class="scorecard" data-title="Halfway check - is your middle rung real" data-foot="A forgiving check. Mostly-no is normal at halfway; do the lowest row before session 4.">
+      <div class="sc-row"><div class="sc-q">Your backlog has a written three-pile triage<em>Session 1's homework: ten workloads, three columns, a one-line reason each.</em></div></div>
+      <div class="sc-row"><div class="sc-q">At least one workload is priced on the free tier<em>Session 2's formula with a real scan estimate and a real monthly number.</em></div></div>
+      <div class="sc-row"><div class="sc-q">One pattern workload has a named backtest design<em>Label window, feature freeze date, holdout months - tonight's build-along, on paper.</em></div></div>
+      <div class="sc-row"><div class="sc-q">You know your org's inference-box cost<em>Whatever Cadence's $62 box maps to in your stack - ask, do not guess.</em></div></div>
+      <div class="sc-row"><div class="sc-q">You can state the Grinsztajn scope caveat from memory<em>Typical, medium-sized (~10K sample) tabular data - never "trees always win".</em></div></div>
+    </div>
+
+    <div class="callout tip">
+      <p><strong>Keep the backtest sheet.</strong> Session 5 prices this workload's LLM alternative with real token math, and session 6 routes it live in the simulator. The trust number you wrote tonight is what makes both of those comparisons honest instead of rhetorical.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="section" id="exercise">
+    <div class="section-kicker">
+      <span class="klabel">Homework</span>
+      <h2>Before session 4</h2>
+      <span class="tag exercise">30 min</span>
+    </div>
+    <ol>
+      <li><strong>Finish the backtest design for a second pattern workload</strong> - the forecast or the anomaly detector - using the same five decisions: label window, freeze date, holdout, trust and kill numbers, heuristic baseline.</li>
+      <li><strong>Write the heuristic baseline for every workload in your pattern pile.</strong> An afternoon each, and each one is a deterministic yardstick the free tier gives you for near-nothing.</li>
+      <li><strong>Find your org's inference-box number</strong> - what serving a small model actually costs in your stack per month. It anchors every "should this be an LLM call" debate you will ever have.</li>
+      <li><strong>Read the Grinsztajn abstract and the McElfresh abstract.</strong> Ten minutes total. You are reading for the scopes, not the scores.</li>
+      <li><strong>Optional:</strong> find one impressive LLM-on-a-famous-CSV demo online and check the dataset's age against the model's training cutoff. You now know what you are probably looking at.</li>
+    </ol>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="section-kicker">
+      <span class="klabel">Check yourself</span>
+      <h2>Three questions</h2>
+    </div>
+    <p>Clear all three and session 3 gets stamped in your passport.</p>
+
+    <div class="quiz-q" data-answer="2">
+      <p class="qtext">1 · Grinsztajn et al. (NeurIPS 2022) is the most-quoted paper for the middle rung. What does it actually establish?</p>
+      <button class="qopt" type="button">A · Tree-based models beat neural networks on all tabular data at any scale</button>
+      <button class="qopt" type="button">B · Neural networks have closed the gap and trees are now legacy tooling</button>
+      <button class="qopt" type="button">C · Tree-based models remain state of the art on typical, medium-sized (~10K sample) tabular data - a scoped finding, with the scope in the title</button>
+      <p class="qwhy">The scope IS the finding: typical, medium-sized tabular data, across 45 datasets. Overstate it to "trees always win" and the first counterexample takes your credibility with it. Scoped claims survive meetings; slogans do not.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="0">
+      <p class="qtext">2 · Why does this course call backtestability a form of verification rather than just evaluation?</p>
+      <button class="qopt" type="button">A · The model is graded on held-out history where reality already wrote the answer key, before it touches any live decision</button>
+      <button class="qopt" type="button">B · Because backtests run automatically, they cannot be gamed by the modeler</button>
+      <button class="qopt" type="button">C · Because a good backtest score guarantees the model will keep performing after deployment</button>
+      <p class="qwhy">The past already contains the answers, so the exam is real and gradeable pre-deployment - that is what makes it a cousin of the deterministic tier's verified-once property. It can absolutely be gamed (leaky features, shuffled time), which is why the build-along exists, and it guarantees nothing forever - drift is why the monitoring loop and its $40 a month stay in the price.</p>
+    </div>
+
+    <div class="quiz-q" data-answer="1">
+      <p class="qtext">3 · An LLM scores brilliantly on a famous public churn dataset. Per Bordt et al. (COLM 2024), what should you conclude?</p>
+      <button class="qopt" type="button">A · Frontier models have overtaken gradient boosting on tabular prediction</button>
+      <button class="qopt" type="button">B · Possibly nothing about capability: LLMs memorized popular tabular datasets verbatim, so pre-cutoff benchmark wins can be contamination</button>
+      <button class="qopt" type="button">C · The result transfers to your data as long as your schema is similar</button>
+      <p class="qwhy">Bordt and colleagues showed LLMs can reproduce rows of famous datasets character for character - the exam was in the training set. The only certificate that counts is one on data the model provably has not seen, which is exactly what your own held-out months provide.</p>
+    </div>
+
+    <p class="quiz-score"></p>
+  </section>
+
+  <!-- ============ OFFICIAL COVERAGE ============ -->
+  <section class="section" id="official">
+    <div class="section-kicker">
+      <span class="klabel">Sources covered</span>
+      <h2>What this session teaches, and where it came from</h2>
+    </div>
+    <div class="covered">
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">Google Rules of ML, rule 1 corollary</span><span class="note">The heuristic-first gate: 50 percent of the boost for an afternoon's work, and a yardstick every model must beat</span></div>
+      <div class="covered-row"><span class="status pill solid">✓</span><span class="name">The tabular evidence stack: Grinsztajn 2022, McElfresh 2023, Bordt 2024</span><span class="note">All three findings with every caveat carried - the Grinsztajn scope, the tuning-beats-algorithm result, the contamination warning</span></div>
+    </div>
+    <p class="mono" style="margin-top:14px">Full source map with every URL and every honesty caveat: <span class="mono">materials/official-course-map.md</span> in this repo.</p>
+  </section>
+
+  <!-- ============ CHEAT SHEET ============ -->
+  <section class="cheat" id="cheatsheet">
+    <h3>Session 3 cheat sheet <span>· pin this</span></h3>
+    <div class="grid-2">
+      <div class="cheat-item"><b>The middle-rung signature</b><span>No writable rule, but history contains it. Structured rows in, a number or flag out, graded eventually by reality.</span></div>
+      <div class="cheat-item"><b>Backtest before trust</b><span>Train on the old months, grade on held-out recent ones. A real exam with a real answer key, before deployment.</span></div>
+      <div class="cheat-item"><b>The $62 box</b><span>One inference box serves all three pattern workloads: $62 a month, 7/10 trusted - the cheapest trustworthy config.</span></div>
+      <div class="cheat-item"><b>Grinsztajn, scoped</b><span>Trees remain SOTA on typical, medium-sized (~10K sample) tabular data. The scope is the finding - never overstate it.</span></div>
+      <div class="cheat-item"><b>Tuning beats tool-swapping</b><span>McElfresh, 176 datasets: lightly-tuned GBDT is the strongest default, and tuning matters more than algorithm choice.</span></div>
+      <div class="cheat-item"><b>The contamination test</b><span>Bordt: LLMs memorized famous tabular datasets verbatim. Trust only exams the model provably has not seen - yours.</span></div>
+    </div>
+  </section>
+
+  <div class="callout next">
+    <span class="nx-pill">Next session</span>
+    <p>Seven of ten workloads are now routed, and the bill so far is pocket change plus one $62 box. The last three - theming tickets, drafting emails, extracting action items - are genuine judgment work, and session 4 is where this course happily spends real money: the GenAI fit test, the cascade pattern that keeps frontier calls for the cases that need them, and the simulator's move to $176 a month with all 10 of 10 trusted. Spending goes up, and it is right.</p>
+  </div>
+
+  <footer class="pagefoot">
+    <span>Session 3 of 6 · learn-when-ai-with-phoebe · by Phoebe Fu &nbsp;·&nbsp; 📚 <a href="https://phoebefu6.github.io/learn-with-phoebe/">Learn with Phoebe ↗</a></span>
+    <span><a href="../index.html">← All sessions</a> &nbsp;·&nbsp; <a href="02-the-almost-free-tier.html">Prev: The almost-free tier</a> &nbsp;·&nbsp; <a href="04-when-genai-wins.html">Next: When GenAI wins →</a></span>
+  </footer>
+
+</main>
+
+<script src="../assets/app.js?v=1"></script>
+</body>
+</html>
